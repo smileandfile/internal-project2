@@ -1,0 +1,18 @@
+<div id="successfullyCreatedModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title"><%= type %></h2>
+      </div>
+      <div class="modal-body">
+        <p><%= raw message %></p>
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $("#successfullyCreatedModal").modal();
+</script>

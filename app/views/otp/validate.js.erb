@@ -1,0 +1,11 @@
+$(function() {
+  $('.otp-form-<%= @type %> .notice').show().html('<%= @message %>');
+  $('.otp-form-<%= @type %> .btn-default').attr('disabled', <%= @success %>)
+  <% if @fully_validated %>
+    $('#validateOTPEmail .otp-validation').hide();
+    $('#validateOTPEmail .otp-validation-success').show();
+    setTimeout(function() {
+      window.location = '<%= dashboard_url %>'
+    }, 6000);
+  <% end %>
+});

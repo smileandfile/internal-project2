@@ -1,0 +1,33 @@
+<%= simple_form_for([:dashboard, @domain]) do |f| %>
+  <% if domain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(domain.errors.count, "error") %> prohibited this domain from being saved:</h2>
+
+      <ul>
+      <% domain.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :name, disabled: true %>
+  <label>Firm Name</label>
+  <%= f.input :company_name, label: false  %>
+  <%= f.input :address %>
+  <%= f.input :pan_number %>
+  <%= f.input :firm_turnover %>
+  <%= f.input :gstin_number %>
+  <%= yield %>
+  <div class="button-align">
+    <%= f.submit 'Update Domain', class: "btn btn-default" %>
+    <%= link_to 'Show', dashboard_domain_path(@domain), class: "btn btn-default"  %> |
+    <%= link_to 'Back', dashboard_domains_path, class: "btn btn-default"  %>
+  </div>
+<% end %>
+<script>
+  var action = '<%= action %>';
+  if(action == "SHOW DOMAIN") {
+    $("#edit_domain_<%= @domain.id %> :input").prop("disabled", true);
+    $("#edit_domain_<%= @domain.id %> .button-align").hide();
+  }
+</script>

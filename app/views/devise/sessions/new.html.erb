@@ -1,0 +1,55 @@
+<% content_for :heading do %>
+  <h3>Sign In</h3>
+<% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name, html: { autocomplete: 'off'})) do |f| %>            
+  <div class= "row">             
+    <div class="col-xs-3 access-form-label">
+      <%= f.label :Domain %>
+    </div>
+    <div class="col-xs-9 access-form-input">
+      <%= f.input :domain_name, label: false,
+                  required: false,
+                  placeholder: 'Domain Name' %>
+    </div>
+  </div>           
+  <div class= "row">             
+    <div class="col-xs-3 access-form-label">
+      <%= f.label :Email %>
+    </div>
+    <div class="col-xs-9 access-form-input">
+      <%= f.input :email, label: false,
+                  required: true,
+                  placeholder: 'Email' %>
+    </div>
+  </div>           
+  <div class= "row">             
+    <div class="col-xs-3 access-form-label">
+      <%= f.label :Password %>
+    </div>
+    <div class="col-xs-9 access-form-input">
+      <%= f.input :password, label: false, 
+                  required: false,
+                  placeholder: '******' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-9">
+      <div class="access-align-btn">
+        <%= f.button :submit, "Login", class: 'btn-default small' %>
+        <%= link_to 'http://smileandfile.com/', 
+          class: 'btn btn-default small' do %>
+          <span>Cancel</span>
+        <% end %>
+      </div>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-9 login-forget-btn">
+      <%= link_to new_user_password_path, 
+        class: 'btn btn-default small' do %>
+        <span>Forgot Password</span>
+      <% end %>
+    </div>
+  </div>
+<% end %>

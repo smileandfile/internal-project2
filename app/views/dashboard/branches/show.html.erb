@@ -1,0 +1,26 @@
+<h3>Branch</h3>
+<div class="table-responsive">
+  <table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Location</th>
+        <th>Gstin</th>
+        <th>Company_name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @branch.name %></td>
+        <td><%= @branch.address %></td>
+        <td><%= @branch.location %></td>
+        <td><%= @branch.gstin.gstin_number %></td>
+        <td><%= @branch.gstin.entity.company_name %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'Edit', edit_dashboard_branch_path(@branch), class: "btn btn-default" %>
+<%= link_to 'Back', dashboard_branches_path, class: "btn btn-default" %>

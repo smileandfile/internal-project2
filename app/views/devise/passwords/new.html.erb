@@ -1,0 +1,46 @@
+<% content_for :heading do %>
+  <h3>Forgot Password?</h3>
+<% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+  <div class= "row">             
+    <div class="col-xs-3 access-form-label">
+      <%= f.label :Domain %>
+    </div>
+    <div class="col-xs-9 access-form-input">
+      <%= f.input :domain_name, label: false,
+                  required: false,
+                  placeholder: 'Domain Name' %>
+    </div>
+  </div>
+  <div class= "row">             
+    <div class="col-xs-3 access-form-label">
+      <%= f.label :Email %>
+    </div>
+    <div class="col-xs-9 access-form-input">
+      <%= f.input :email, label: false, 
+                  required: false, placeholder: 'Email', 
+                  autofocus: true %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-9 password-reset-btn set-button margin-bottom">
+      <%= f.button :submit, "Reset Password", class: 'btn-default small' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-9">
+      <div class="access-align-btn">
+        <%= link_to new_user_session_path, 
+          class: 'btn btn-default small' do %>
+          <span>Login</span>
+        <% end %>
+        <%= link_to 'http://smileandfile.com/', 
+          class: 'btn btn-default small' do %>
+          <span>Cancel</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

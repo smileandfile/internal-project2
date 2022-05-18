@@ -1,0 +1,40 @@
+<div class="snf-form text-align-left">
+  <%= simple_form_for([:dashboard, @entity], remote: true) do |f| %>
+    <% if entity.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(entity.errors.count, "error") %> prohibited this entity from being saved:</h2 >
+
+        <ul>
+          <% entity.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-inputs">
+      <%= f.input :company_name, label: "Name of The Company", 
+                  placeholder: "Can be Alphanumeric", 
+                  required: true %>
+      <%= f.input :address,
+                  placeholder: "Address",
+                  required: true, input_html: {rows: 4} %>
+      <%= f.input :pan_number, label: "PAN No.", 
+                  placeholder: "Valid PAN No, Alphanumeric", 
+                  required: true %>
+      <%= f.hidden_field :domain_id, value: current_user.domain_id %>
+    </div>
+    <%= yield %>
+    <div class="button-align">
+      <%= f.button :submit, action %>
+      <%= f.button :button, 'RESET', type:'reset', class: 'big' %>
+      <%= link_to 'BACK', dashboard_entities_path, class: 'btn btn-default big' %>
+    </div>
+  <% end %>
+</div>
+<script>
+  var action = '<%= action %>';
+  if(action == "SHOW ENTITY") {
+    $("#edit_entity_<%= @entity.id %> :input").prop("disabled", true);
+    $("#edit_entity_<%= @entity.id %> .button-align").hide();
+  }
+</script>

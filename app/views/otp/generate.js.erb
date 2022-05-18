@@ -1,0 +1,4 @@
+$(function() {
+  $('.otp-form-<%= @type %> .notice').show().html('<%= @message %>');
+  $('.otp-form-<%= @type %> .otp-verify-button').attr('disabled', !<%= @success %>)
+});

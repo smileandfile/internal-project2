@@ -1,0 +1,39 @@
+<%= render 'shared/invoice', order: @order %>
+<% unless @order.is_payment_mode_locked %>
+  <% if @order.user_payment_mode.to_sym == :online %>
+    <%= link_to 'Continue', make_payment_dashboard_order_path(@order), class: "btn btn-default extra-margin-bottom" %> 
+  <% else %>
+    <button type="button" class="btn btn-default extra-margin-bottom" data-toggle= "modal" data-target="#makePaymentDetails">Continue</button>
+  <% end %>
+<% end %>
+<% if @order.deactive? %>
+  <%= link_to 'Change Subscription Package', dashboard_packages_path, class: 'btn btn-default extra-margin-bottom' %>
+<% end  %>
+<% unless @order.is_payment_mode_locked %>
+  <!-- Modal -->
+  <div id="makePaymentDetails" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Payment Mode <%= PAYMENT_TYPES[@order.user_payment_mode.to_sym] %></h4>
+        </div>
+        <div class="modal-body">
+          <% if @order.user_payment_mode.to_sym == :cheque_draft %>
+            <p><%= render 'shared/payment_by_cheque_details' %></p>
+          <% elsif @order.user_payment_mode.to_sym == :neft_rtgs %>
+            <p><%= render 'shared/payment_by_neft_details' %></p>
+          <% end %>
+          <% unless @order.payment_mode_lock %>
+            <%= link_to 'OK', make_payment_dashboard_order_path(@order), class: "btn btn-default" %>
+          <% end %>
+          <%= simple_form_for @order, url: make_payment_dashboard_order_path(@order), method: :get do |f| %>
+            <%= f.hidden_field :user_payment_mode, value: 'online' %>
+            <%= f.submit 'Do you want to pay online and activate your domain now?', class: "btn btn-default form-inline"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

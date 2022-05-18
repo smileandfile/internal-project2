@@ -1,0 +1,20 @@
+<%= simple_form_for [:dashboard, @package] do |f| %>
+  <% if package.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(package.errors.count, "error") %> prohibited this package from being saved:</h2>
+
+      <ul>
+      <% package.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :name %>
+  <%= f.input :cost %>
+  <%= f.input :description %>
+  <%= f.select(:package_type, Package.package_types.keys.map { |role| [role.titleize, role] }) %>
+  <div class="actions">
+    <%= f.submit 'Create Package', class: 'btn btn-default extra-margin-bottom' %>
+  </div>
+<% end %>

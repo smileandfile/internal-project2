@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "gstin": {
+      "description": "GSTIN of the taxpayer",
+      "type": "string",
+      "maxLength": 15,
+      "minLength": 15,
+      "pattern": "^[a-zA-Z0-9]+$",
+      "required": true
+    },
+    "ret_period": {
+      "description": "Return Period",
+      "type": "string",
+      "required": true
+    }
+  },
+  "required": [
+    "gstin",
+    "ret_period"
+  ]
+}

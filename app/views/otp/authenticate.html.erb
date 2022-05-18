@@ -1,0 +1,11 @@
+<h1>Enter OTP Recieved</h1>
+<div class="alert authenticate-otp notice-box" style="display: none;"></div>
+
+<%= form_tag otp_validate_path, method: :post do |f| %>
+  <%#= text_field_tag :phone_number, current_user.phone_number, disabled: true %>
+  <%= text_field_tag :otp, nil, required: true %>
+  <%= submit_tag "CONFIRM", class: 'btn btn-default' %>
+<% end %>
+<%= form_tag otp_resend_path, method: :post, remote: true do |f| %>
+  <%= submit_tag "RESEND OTP", class: 'btn btn-default' %>
+<% end %>

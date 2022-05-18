@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Account Details</h2>
+      <h4>Credits: <%= two_decimal_number(@account&.credits) %></h4> 
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#topUpModal">TOP-UP</button>
+      <hr>
+      <h4>Number of GSTIN creation left: <%= @account&.gstin_allowed_left %></h4>
+      <!-- Trigger the modal with a button -->
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#purchaaseGstinModal">ADD MORE GSTINS</button>
+    </div>
+  </div>
+  <% unless @entries.empty? %>
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Passbook</h2>
+        <div class="table-responsive">
+          <table width="100%" class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Amount Deducted</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @entries.each do |entry| %>
+              <tr>
+                <td><%= entry.description %></td>
+                <td><%= two_decimal_number(entry.amount_deducted) unless entry.amount_deducted.nil? %></td>
+                <td><%=h format_date_for_display(entry.created_at) %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+<!-- Purchase gstin Modal -->
+<div id="purchaaseGstinModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">PURCHASE GSTINS</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag purchase_gstins_dashboard_domains_path do %>
+          <%= label_tag 'Number of gstins'%>
+          <%= number_field_tag :number_of_gstins, 1 %>
+          <%= submit_tag "BUY", class: "btn btn-default" %>
+        <% end %>
+        <p>Each GSTIN created : Rs <%= two_decimal_number(@account.per_gstin_amount) %>/- + 18% GST.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- topup Modal -->
+<div id="topUpModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add money to your smileandfile Credits</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag topup_ccav_request_handler_dashboard_transactions_path, method: :get do %>
+          <%= label_tag 'Amount'%>
+          <%= number_field_tag :amount, 2000 %>
+          <%= submit_tag "MAKE PAYMENT", class: "btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

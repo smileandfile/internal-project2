@@ -1,0 +1,30 @@
+
+<h4>OTP on <%= type.capitalize %></h4>
+<div class='otp-form-<%= type %>'>
+  <% if current_user&.otp_confirmed?(type) %>
+    <h4><small class="notice notice-small">Thanks for validating your <%= type %></small></h4>
+  <% else %>
+    <%= form_tag otp_validate_path, method: :post, remote: true do |f| %>
+      <h4><small class="notice notice-small" style="display: none;"></small></h4>
+      <%= text_field_tag :otp, nil, class: 'form-control', required: true, placeholder: 'Enter OTP' %>
+      <%= hidden_field_tag :type, type %>
+      <br/>
+      <div class="form-inline">
+        <%= button_tag "Generate", type: :button, class: "btn btn-default otp-generate-button" %>
+        <%= submit_tag "Enter", disabled: 'true', class: "btn btn-default otp-verify-button" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<script>
+  $(function() {
+    var containerSelector = '.otp-form-<%= type %>';
+    $('.otp-generate-button', $(containerSelector)).on('click', function() {
+      $.ajax('<%= otp_generate_path %>', {
+        method: 'POST',
+        data: { type: '<%= type %>' },
+        dataType: 'script'
+      });
+    });
+  });
+</script>

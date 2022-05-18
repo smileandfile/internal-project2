@@ -1,0 +1,6 @@
+<p>Dear Madam/Sir,</p>
+<p>We welcome you with great pleasure. You are in the process of creating a new Domain on the Smile and File Portal for filing GST
+   returns and meeting other compliances.</p>
+<p>Your domain has been created on our portal and needs to be activated. Please click on the link given below to activate the domain:</p>
+<p><%= link_to 'Confirm your email', confirmation_url(@resource, confirmation_token: @token) %></p>
+<%= render 'user_mailer/common_mail_content' %>

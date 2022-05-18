@@ -1,0 +1,2 @@
+module GstinsHelper
+end

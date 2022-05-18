@@ -1,0 +1,67 @@
+<div class="snf-form text-align-left">
+  <%= simple_form_for([:dashboard, @gstin], remote: true) do |f| %>
+    <% if gstin.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(gstin.errors.count, "error") %> prohibited this gstin from being saved:</h2>
+        <ul>
+          <% gstin.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-inputs"> 
+      <%= f.association :entity, 
+                        collection: Entity.accessible_by(current_ability),
+                        label_method: :company_name,
+                        prompt: "Select Entity", 
+                        label: "Select Entity",
+                        required: true,
+                        input_html: {class: "chosen-select"} %>
+      <%= f.input :gstin_number, 
+                  placeholder: "Enter Valid 15 digits GSTIN Number", 
+                  label: "GSTIN Number",
+                  required: true %>
+      <%= f.input :registration_date, 
+                  input_html: {'data-provide': 'datepicker', 
+                               'data-date-format': 'dd-mm-yyyy'},
+                  placeholder: "Enter the date of Registration (DD-MM-YYYY)", 
+                  label: "Effective Date",
+                  required: true,
+                  input_html: {class: "datepicker"}, as: :string %>
+      <%= f.input :username, label: "User Name",  
+                  required: true, 
+                  placeholder: "Enter the username that was created at the time of Registration at GSTN Portal" %>
+      <%= f.input :dealer_type, required: true,
+                  label: "Select Type of Dealer",
+                  collection: Gstin.dealer_types.keys.map { |type| [type.titleize, type] } %>
+      <%= f.input :turnover_last_year, 
+                  label: "Gross turnover for the last financial year (INR)",  
+                  required: true,
+                  placeholder: "Enter Numbers only" %>
+      <%= f.input :turnover_current, 
+                  label: "Current turnover (April to June 2017 INR)", 
+                  required: true,
+                  placeholder: "Enter Numbers only" %>
+      <% if current_user.super? %>
+        <label>Environment</label>
+        <%= f.select :gsp_environment, Gstin.gsp_environments.keys.map {|env| [env.titleize,env]} %>
+        <label>Endpoint</label>
+        <%= f.select :endpoint_name, Gstin.endpoint_names_for_select, include_blank: ' - Automatic - ' %>
+      <% end %>
+    </div>
+    <%= yield %>
+    <div class="button-align">
+      <%= f.button :submit, action %>
+      <%= f.button :button, 'RESET', type:'reset', class: 'big' %>
+      <%= link_to 'BACK', dashboard_gstins_path, class: 'btn btn-default big' %>
+    </div>
+  <% end %>
+</div>
+<script>
+  var action = '<%= action %>';
+  if(action == "SHOW GSTIN") {
+    $("#edit_gstin_<%= @gstin.id %> :input").prop("disabled", true);
+    $("#edit_gstin_<%= @gstin.id %> .button-align").hide();
+  }
+</script>

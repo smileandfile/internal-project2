@@ -1,0 +1,60 @@
+<h3>Domains</h3>
+<div class="table-responsive">
+  <table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Total Entities</th>
+        <th>Total Gstins</th>
+        <th>Total Users</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @domain.name %></td>
+        <td>
+          <%= link_to @domain.entities.count, '#', class: 'show-entities' %>
+        </td>
+        <td>
+          <%= link_to @domain.gstins.count, '#', class: 'show-gstins' %>
+        </td>
+        <td>
+          <%= link_to @domain.users.count, '#', class: 'show-users' %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="show-entities-list">
+  <% if @domain.entities.any? %>
+    <h3>ENTITIES</h3>
+    <%= render 'shared/common_entities_list', entities: @domain.entities %>
+  <% end %>
+</div>
+<div class="show-gstins-list">
+  <% if @domain.gstins.any? %>
+    <h3>GSTINS</h3>
+    <%= render 'shared/common_gstins_list', gstins: @domain.gstins %>
+  <% end %>
+</div>
+<div class="show-users-list">
+  <% if @domain.users.any? %>
+    <h3>USERS</h3>
+    <%= render 'shared/common_users_list', users: @domain.users %>
+  <% end %>
+</div>
+<script>
+  var fieldsObject = { "show-entities": "show-entities-list", "show-users": "show-users-list", "show-gstins": "show-gstins-list"  }
+  for(x in fieldsObject) {
+    $('.'+fieldsObject[x]).hide();
+  }
+  $("a").click(function() {
+    var myClass = $(this).attr("class");
+    if(fieldsObject[myClass] != undefined) {
+      $('.' + fieldsObject[myClass]).show();
+    }
+  });  
+</script>
+
+
+

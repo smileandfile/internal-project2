@@ -1,0 +1,13 @@
+<div class="snf-container" align="center">
+  <div class="snf-heading text-align-left margin-bottom">
+    <h2>Domain</h2>
+    <div class="margin-bottom">
+      <label class="label-left">* Fields are mandatory</label>
+    </div>
+  </div>
+  <%= render 'form', domain: @domain, action: "SHOW DOMAIN" do |f| %>
+    <div>
+      <%= link_to 'Back', dashboard_domains_path, class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Package Name</th>
+            <th>Domain Name</th>
+            <th>Billing Name</th>
+            <% if current_user.has_active_package? %>
+              <th>Domain Validity</th>
+            <% end %>
+            <th>Creation Date</th>
+            <th>Price</th>
+            <th>Subscription</th>
+            <th>Tax Invoice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= 1 %></td>
+            <td><%= @order.package.name %></td>
+            <td><%= @order.user.domain.name %></td>
+            <td><%= @order.billing_name %></td>
+            <% if current_user.has_active_package? %>
+              <td>
+                From: <%= format_date(@order.user.domain.package_start_date) %>
+                To: <%= format_date(@order.user.domain.package_end_date) %>
+              </td>
+            <% end %>
+            <td><%= format_date(@order.created_at) %></td>
+            <td>INR <%= @order.amount %></td>
+            <td>
+                <span class="label label-info">
+                  <%= @order.subscription %>
+                </span>
+            </td>
+            <td>
+              <%= link_to 'show', dashboard_order_path(@order) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%
+  if @order.active?
+    message = "Congratulations your domain has been sucessfully activated. You may now create the Entities, " \
+              " GSTIN's, users and set their roles, post which you may download the desktop software and install on your Microsoft Windows machine"
+    type = "Domain Sucessfully activated"  
+    name = "TAX INVOICE"        
+  else
+    type = 'Domain activation is pending'
+    message = "Package has already been selected. If you have any problems please contact us" \
+              " at <a href='mailto:sales@smileandfile.com'>sales@smileandfile.com</a>"
+    name = "DRAFT INVOICE"          
+  end                         
+%>
+<%= render 'shared/successfully_created_modal', type: type, message: message do |f| %>
+  <%= link_to name, dashboard_order_path(@order), class: 'btn btn-default' %>
+<% end %>

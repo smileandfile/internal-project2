@@ -1,0 +1,624 @@
+
+<%= simple_form_for @gstr3b, url: save_gstr3b_dashboard_gstr3b_index_path, method: :post do |f| %>
+
+  <table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+      <th colspan="6">
+        Template to be filled to file Form GSTR-3B
+      </th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Year</th>
+        <th>Month</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>2017</td>
+        <td>08</td>
+      </tr>
+      <tr>
+        <td>GSTIN</td>
+        <td colspan="2"><input type='text' name="gstr3b[gstin]" data-prevent-set-zero></td>
+      </tr>
+      <tr>
+        <td> Legal name of the registered person </td>
+        <td colspan="2"><input type='text' name="gstr3b[legal_name]" data-prevent-set-zero></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table width="100%" class="snf-table">
+  <thead>
+    <tr>
+    <th colspan="8">
+      3.1 Details of Outward Supplies and inward supplies liable to reverse charge
+
+    </th>
+    </tr>
+    <tr>
+      <th colspan="2">Nature of Supplies</th>
+      <th>Total Taxable value</th>
+      <th>Integrated Tax</th>
+      <th>Central Tax</th>
+      <th>State/UT Tax</th>
+      <th>Cess</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td colspan="8"><strong>(a) Outward taxable supplies (other than zero rated, nil rated and exempted)</strong></td>
+    </tr>
+    <tr>
+      <td rowspan="6">INTRA state supplies</td>
+      <td>attracting GST 0.25%</td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 3% </td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 5% </td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 12% </td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 18% </td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 28% </td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td rowspan="6">INTER state supplies</td>
+      <td>attracting GST 0.25%</td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 3%</td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 5%</td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 12%</td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 18%</td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td>attracting GST 28%</td>
+      <td><input type='text' class="osup_det_txval"></td>
+      <td><input type='text' class="osup_det_iamt"></td>
+      <td><input type='text' class="osup_det_camt"></td>
+      <td><input type='text' class="osup_det_samt"></td>
+      <td><input type='text' class="osup_det_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Category Total (a)</strong></td>
+      <td><input type='text' data-sum-selector=".osup_det_txval" class="osup_txval_total_value osup_det_txval_total_sum" name="gstr3b[osup_det][txval]"></td>
+      <td><input type='text' data-sum-selector=".osup_det_iamt" class="osup_iamt_total_value osup_det_iamt_total_sum" name="gstr3b[osup_det][iamt]"></td>
+      <td><input type='text' data-sum-selector=".osup_det_camt" class="osup_camt_total_value osup_det_camt_total_sum" name="gstr3b[osup_det][camt]"></td>
+      <td><input type='text' data-sum-selector=".osup_det_samt" class="osup_samt_total_value osup_det_samt_total_sum" name="gstr3b[osup_det][samt]"></td>
+      <td><input type='text' data-sum-selector=".osup_det_csamt" class="osup_csamt_total_value osup_det_csamt_total_sum" name="gstr3b[osup_det][csamt]"></td>
+    </tr>
+    <tr>
+      <td colspan="8"><strong>(b) Outward taxable supplies (zero rated)</strong></td>
+    </tr>
+    <tr>
+      <td colspan="2">EXPORTS (Done without payment of Duty) </td>
+      <td><input type='text' class="osup_zero_txval"></td>
+      <td><input type='text' class="osup_zero_iamt"></td>
+      <td><input type='text' class="osup_zero_camt"></td>
+      <td><input type='text' class="osup_zero_samt"></td>
+      <td><input type='text' class="osup_zero_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2">Supplies to SEZ (Done without payment of Duty)</td>
+      <td><input type='text' class="osup_zero_txval"></td>
+      <td><input type='text' class="osup_zero_iamt"></td>
+      <td><input type='text' class="osup_zero_camt"></td>
+      <td><input type='text' class="osup_zero_samt"></td>
+      <td><input type='text' class="osup_zero_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Others (If any)</td>
+      <td><input type='text' class="osup_zero_txval"></td>
+      <td><input type='text' class="osup_zero_iamt"></td>
+      <td><input type='text' class="osup_zero_camt"></td>
+      <td><input type='text' class="osup_zero_samt"></td>
+      <td><input type='text' class="osup_zero_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Category Total (b)</strong></td>
+      <td><input type='text' data-sum-selector=".osup_zero_txval" class="osup_txval_total_value osup_zero_txval_total_sum" name="gstr3b[osup_zero][txval]"></td>
+      <td><input type='text' data-sum-selector=".osup_zero_iamt" class="osup_iamt_total_value osup_zero_iamt_total_sum" name="gstr3b[osup_zero][iamt]"></td>
+      <td><input type='text' data-sum-selector=".osup_zero_camt" class="osup_camt_total_value osup_zero_camt_total_sum" name="gstr3b[osup_zero][camt]"></td>
+      <td><input type='text' data-sum-selector=".osup_zero_samt" class="osup_samt_total_value osup_zero_samt_total_sum" name="gstr3b[osup_zero][samt]"></td>
+      <td><input type='text' data-sum-selector=".osup_zero_csamt" class="osup_csamt_total_value osup_zero_csamt_total_sum" name="gstr3b[osup_zero][csamt]"></td>
+    </tr>
+    <tr>
+      <td colspan="8"><strong>(c) Other outward supplies (Nil rated, exempted)</strong></td>
+    </tr>
+    <tr>
+      <td colspan="2"> NIL Rated Supplies </td>
+      <td><input type='text' class="osup_nil_txval"></td>
+      <td><input type='text' class="osup_nil_iamt"></td>
+      <td><input type='text' class="osup_nil_camt"></td>
+      <td><input type='text' class="osup_nil_samt"></td>
+      <td><input type='text' class="osup_nil_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Exempt Supplies </td>
+      <td><input type='text' class="osup_nil_txval"></td>
+      <td><input type='text' class="osup_nil_iamt"></td>
+      <td><input type='text' class="osup_nil_camt"></td>
+      <td><input type='text' class="osup_nil_samt"></td>
+      <td><input type='text' class="osup_nil_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Category Total (c)</strong></td>
+      <td><input type='text' data-sum-selector=".osup_nil_txval" class="osup_txval_total_value osup_nil_txval_total_sum" name="gstr3b[osup_nil_exmp][txval]"></td>
+      <td><input type='text' data-sum-selector=".osup_nil_iamt" class="osup_iamt_total_value osup_nil_iamt_total_sum" name="gstr3b[osup_nil_exmp][iamt]"></td>
+      <td><input type='text' data-sum-selector=".osup_nil_camt" class="osup_camt_total_value osup_nil_camt_total_sum" name="gstr3b[osup_nil_exmp][camt]"></td>
+      <td><input type='text' data-sum-selector=".osup_nil_samt" class="osup_samt_total_value osup_nil_samt_total_sum" name="gstr3b[osup_nil_exmp][samt]"></td>
+      <td><input type='text' data-sum-selector=".osup_nil_csamt" class="osup_csamt_total_value osup_nil_csamt_total_sum" name="gstr3b[osup_nil_exmp][csamt]"></td>
+    </tr>
+    <tr>
+      <td colspan="8"><strong>(d) Inward supplies (liable to reverse charge)</strong></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Purchase from Unregistered Dealers attracting GST   0.25% </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Purchase from Unregistered Dealers attracting GST   3% </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Purchase from Unregistered Dealers attracting GST   5% </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Purchase from Unregistered Dealers attracting GST   12% </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Purchase from Unregistered Dealers attracting GST   18% </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Purchase from Unregistered Dealers attracting GST   28% </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Imports of Goods  </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Imports of Services </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"> Others (If any) </td>
+      <td><input type='text' class="osup_isup_rev_txval"></td>
+      <td><input type='text' class="osup_isup_rev_iamt"></td>
+      <td><input type='text' class="osup_isup_rev_camt"></td>
+      <td><input type='text' class="osup_isup_rev_samt"></td>
+      <td><input type='text' class="osup_isup_rev_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Category (d)</strong></td>
+      <td><input type='text' data-sum-selector=".osup_isup_rev_txval" class="osup_txval_total_value osup_isup_rev_txval_total_sum" name="gstr3b[isup_rev][txval]"></td>
+      <td><input type='text' data-sum-selector=".osup_isup_rev_iamt" class="osup_iamt_total_value osup_isup_rev_iamt_total_sum" name="gstr3b[isup_rev][iamt]"></td>
+      <td><input type='text' data-sum-selector=".osup_isup_rev_camt" class="osup_camt_total_value osup_isup_rev_camt_total_sum" name="gstr3b[isup_rev][camt]"></td>
+      <td><input type='text' data-sum-selector=".osup_isup_rev_samt" class="osup_samt_total_value osup_isup_rev_samt_total_sum" name="gstr3b[isup_rev][samt]"></td>
+      <td><input type='text' data-sum-selector=".osup_isup_rev_csamt" class="osup_csamt_total_value osup_isup_rev_csamt_total_sum" name="gstr3b[isup_rev][csamt]"></td>
+    </tr>
+    <tr>
+      <td colspan="8"><strong>(e) Non-GST outward supplies</strong></td>
+    </tr>
+    <tr>
+      <td colspan="2"> All Supplies (other than (a) to (d)) above </td>
+      <td><input type='text' class="osup_nongst_txval"></td>
+      <td><input type='text' class="osup_nongst_iamt"></td>
+      <td><input type='text' class="osup_nongst_camt"></td>
+      <td><input type='text' class="osup_nongst_samt"></td>
+      <td><input type='text' class="osup_nongst_csamt"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Category (e)</strong></td>
+      <td><input type='text' data-sum-selector=".osup_nongst_txval" class="osup_nongst_txval_total_sum" name="gstr3b[osup_nongst][txval]"></td>
+      <td><input type='text' data-sum-selector=".osup_nongst_iamt" class="osup_nongst_iamt_total_sum" name="gstr3b[osup_nongst][iamt]"></td>
+      <td><input type='text' data-sum-selector=".osup_nongst_camt" class="osup_nongst_camt_total_sum" name="gstr3b[osup_nongst][camt]"></td>
+      <td><input type='text' data-sum-selector=".osup_nongst_samt" class="osup_nongst_samt_total_sum" name="gstr3b[osup_nongst][samt]"></td>
+      <td><input type='text' data-sum-selector=".osup_nongst_csamt" class="osup_nongst_csamt_total_sum" name="gstr3b[osup_nongst][csamt]"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Total (a + b + c + d)</strong></td>
+      <td><input type='text' data-sum-selector=".osup_txval_total_value" class="osup_txval_total_sum"></td>
+      <td><input type='text' data-sum-selector=".osup_iamt_total_value" class="osup_iamt_total_sum" ></td>
+      <td><input type='text' data-sum-selector=".osup_camt_total_value" class="osup_camt_total_sum" ></td>
+      <td><input type='text' data-sum-selector=".osup_samt_total_value" class="osup_samt_total_sum" ></td>
+      <td><input type='text' data-sum-selector=".osup_csamt_total_value" class="osup_csamt_total_sum"></td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+
+<table width="100%" class="snf-table">
+  <thead>
+    <tr>
+    <th colspan="6">
+      3.2 Of the supplies shown in 3.1 (a)  above, details of inter-State supplies made to unregistered persons, composition taxable persons and UIN holders
+    </th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Place of Supply(State/UT)</th>
+      <th>Total Taxable value</th>
+      <th>Amount of Integrated Tax</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td colspan="8"><strong>Supplies made to Unregistered Persons</strong></td>
+    </tr>
+    <% STATE_CODES.each do |state_code| %>
+      <tr>
+        <td></td>
+        <td>
+          <input type='hidden' name="gstr3b[sup_inter][][ty]" value="UR">
+          <input type='hidden' name="gstr3b[sup_inter][][pos]" value="<%= state_code[:code] %>">
+          <%= "#{state_code[:full_name]} (#{state_code[:code]})" %>
+        </td>
+        <td><input type='text' name="gstr3b[sup_inter][][txval]"></td>
+        <td><input type='text' name="gstr3b[sup_inter][][iamt]"></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="8">Supplies made to UIN holders</td>
+    </tr>
+    <% STATE_CODES.each do |state_code| %>
+      <tr>
+        <td></td>
+        <td>
+          <input type='hidden' name="gstr3b[sup_inter][][ty]" value="UR">
+          <input type='hidden' name="gstr3b[sup_inter][][pos]" value="<%= state_code[:code] %>">
+          <%= "#{state_code[:full_name]} (#{state_code[:code]})" %>
+        </td>
+        <td><input type='text' name="gstr3b[sup_inter][][txval]"></td>
+        <td><input type='text' name="gstr3b[sup_inter][][iamt]"></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<table width="100%" class="snf-table">
+  <thead>
+    <tr>
+      <th colspan="6">
+      4.  Eligible ITC
+      </th>
+    </tr>
+    <tr>
+      <th>Details</th>
+      <th>Integrated Tax</th>
+      <th>Central Tax</th>
+      <th>State/UT Tax</th>
+      <th>Cess</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td colspan="6"><strong>(A) ITC Available (whether in full or part)</strong></td>
+    </tr>
+    <tr>
+      <td>(1) Import of goods</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_avl][][ty]" value="IMPG">
+      <td><input type='text' class="itc_avl_iamt" name="gstr3b[itc_elg][itc_avl][][iamt]"></td>
+      <td><input type='text' class="itc_avl_camt" name="gstr3b[itc_elg][itc_avl][][camt]"></td>
+      <td><input type='text' class="itc_avl_samt" name="gstr3b[itc_elg][itc_avl][][samt]"></td>
+      <td><input type='text' class="itc_avl_csamt" name="gstr3b[itc_elg][itc_avl][][csamt]"></td>
+    </tr>
+    <tr>
+      <td>(2) Import of services</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_avl][][ty]" value="IMPS">
+      <td><input type='text' class="itc_avl_iamt" name="gstr3b[itc_elg][itc_avl][][iamt]"></td>
+      <td><input type='text' class="itc_avl_camt" name="gstr3b[itc_elg][itc_avl][][camt]"></td>
+      <td><input type='text' class="itc_avl_samt" name="gstr3b[itc_elg][itc_avl][][samt]"></td>
+      <td><input type='text' class="itc_avl_csamt" name="gstr3b[itc_elg][itc_avl][][csamt]"></td>
+    </tr>
+    <tr>
+      <td>(3) Inward supplies liable to reverse charge (other than 1 & 2 above)</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_avl][][ty]" value="ISRC">
+      <td><input type='text' class="itc_avl_iamt" name="gstr3b[itc_elg][itc_avl][][iamt]"></td>
+      <td><input type='text' class="itc_avl_camt" name="gstr3b[itc_elg][itc_avl][][camt]"></td>
+      <td><input type='text' class="itc_avl_samt" name="gstr3b[itc_elg][itc_avl][][samt]"></td>
+      <td><input type='text' class="itc_avl_csamt" name="gstr3b[itc_elg][itc_avl][][csamt]"></td>
+    </tr>
+    <tr>
+      <td>(4) Inward supplies from ISD</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_avl][][ty]" value="ISD">
+      <td><input type='text' class="itc_avl_iamt" name="gstr3b[itc_elg][itc_avl][][iamt]"></td>
+      <td><input type='text' class="itc_avl_camt" name="gstr3b[itc_elg][itc_avl][][camt]"></td>
+      <td><input type='text' class="itc_avl_samt" name="gstr3b[itc_elg][itc_avl][][samt]"></td>
+      <td><input type='text' class="itc_avl_csamt" name="gstr3b[itc_elg][itc_avl][][csamt]"></td>
+    </tr>
+    <tr>
+      <td>(5) All other ITC</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_avl][][ty]" value="OTH">
+      <td><input type='text' class="itc_avl_iamt" name="gstr3b[itc_elg][itc_avl][][iamt]"></td>
+      <td><input type='text' class="itc_avl_camt" name="gstr3b[itc_elg][itc_avl][][camt]"></td>
+      <td><input type='text' class="itc_avl_samt" name="gstr3b[itc_elg][itc_avl][][samt]"></td>
+      <td><input type='text' class="itc_avl_csamt" name="gstr3b[itc_elg][itc_avl][][csamt]"></td>
+    </tr>
+    <tr>
+      <td>Category Total (a)</td>
+      <td><input type='text' data-sum-selector=".itc_avl_iamt" class="itc_avl_iamt_total_sum"</td>
+      <td><input type='text' data-sum-selector=".itc_avl_camt" class="itc_avl_camt_total_sum"></td>
+      <td><input type='text' data-sum-selector=".itc_avl_samt" class="itc_avl_samt_total_sum"></td>
+      <td><input type='text' data-sum-selector=".itc_avl_csamt" class="itc_avl_csamt_total_sum"></td>
+    </tr>
+    <tr>
+      <td colspan="6"><strong>(B) ITC Reversed</strong></td>
+    </tr>
+    <tr>
+      <td>(1) As per rules 42 & 43 of CGST Rules</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_rev][][ty]" value="RUL">
+      <td><input type='text' class="itc_elg_iamt" name="gstr3b[itc_elg][itc_rev][][iamt]"></td>
+      <td><input type='text' class="itc_elg_camt" name="gstr3b[itc_elg][itc_rev][][camt]"></td>
+      <td><input type='text' class="itc_elg_samt" name="gstr3b[itc_elg][itc_rev][][samt]"></td>
+      <td><input type='text' class="itc_elg_csamt" name="gstr3b[itc_elg][itc_rev][][csamt]"></td>
+    </tr>
+    <tr>
+      <td>(2) Others</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_rev][][ty]" value="OTH">
+      <td><input type='text' class="itc_elg_iamt" name="gstr3b[itc_elg][itc_rev][][iamt]"></td>
+      <td><input type='text' class="itc_elg_camt" name="gstr3b[itc_elg][itc_rev][][camt]"></td>
+      <td><input type='text' class="itc_elg_samt" name="gstr3b[itc_elg][itc_rev][][samt]"></td>
+      <td><input type='text' class="itc_elg_csamt" name="gstr3b[itc_elg][itc_rev][][csamt]"></td>
+    </tr>
+    <tr>
+      <td>Category Total (b)</td>
+      <td><input type='text' data-sum-selector=".itc_elg_iamt" class="itc_elg_iamt_total_sum"</td>
+      <td><input type='text' data-sum-selector=".itc_elg_camt" class="itc_elg_camt_total_sum"></td>
+      <td><input type='text' data-sum-selector=".itc_elg_samt" class="itc_elg_samt_total_sum"></td>
+      <td><input type='text' data-sum-selector=".itc_elg_csamt" class="itc_elg_csamt_total_sum"></td>
+    </tr>
+    <tr>
+      <td><strong>(C) Net ITC Available (A) – (B)</strong></td>
+      <td><input type='text' class="itc_net_iamt" name="gstr3b[itc_elg][itc_net][iamt]"></td>
+      <td><input type='text' class="itc_net_camt" name="gstr3b[itc_elg][itc_net][camt]"></td>
+      <td><input type='text' class="itc_net_samt" name="gstr3b[itc_elg][itc_net][samt]"></td>
+      <td><input type='text' class="itc_net_csamt" name="gstr3b[itc_elg][itc_net][csamt]"></td>
+    </tr>
+    <tr>
+      <td colspan="6"><strong>(D) Ineligible ITC</strong></td>
+    </tr>
+    <tr>
+      <td>(1) As per section 17(5)</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_inelg][][ty]" value="RUL">
+      <td><input type='text' name="gstr3b[itc_elg][itc_inelg][][iamt]"></td>
+      <td><input type='text' name="gstr3b[itc_elg][itc_inelg][][camt]"></td>
+      <td><input type='text' name="gstr3b[itc_elg][itc_inelg][][samt]"></td>
+      <td><input type='text' name="gstr3b[itc_elg][itc_inelg][][csamt]"></td>
+    </tr>
+    <tr>
+      <td>(2) Others</td>
+      <input type='hidden' name="gstr3b[itc_elg][itc_inelg][][ty]" value="OTH">
+      <td><input type='text' name="gstr3b[itc_elg][itc_inelg][][iamt]"></td>
+      <td><input type='text' name="gstr3b[itc_elg][itc_inelg][][camt]"></td>
+      <td><input type='text' name="gstr3b[itc_elg][itc_inelg][][samt]"></td>
+      <td><input type='text' name="gstr3b[itc_elg][itc_inelg][][csamt]"></td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+
+<table width="100%" class="snf-table">
+  <thead>
+    <tr>
+    <th colspan="6">
+      5. Values of exempt, nil-rated and non-GST  inward supplies
+    </th>
+    </tr>
+    <tr>
+      <th>Nature of supplies</th>
+      <th>Inter-State supplies</th>
+      <th>Intra-State supplies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>From a supplier under composition scheme, Exempt and Nil rated supply</td>
+      <input type='hidden' name="gstr3b[isup_details][][ty]" value="GST">
+      <td><input type='text' name="gstr3b[isup_details][][inter]"></td>
+      <td><input type='text' name="gstr3b[isup_details][][intra]"></td>
+    </tr>
+    <tr>
+      <td>Non GST supply</td>
+      <input type='hidden' name="gstr3b[isup_details][][ty]" value="NONGST">
+      <td><input type='text' name="gstr3b[isup_details][][inter]"></td>
+      <td><input type='text' name="gstr3b[isup_details][][intra]"></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= f.submit %>
+
+<% end %>
+
+
+<script>
+  $(function() {
+    // reset all values to zero
+    $('input[type="text"]').each(function(i, item) {
+      $el = $(item);
+      if (!$el.val() && $el.data('preventSetZero') == null) {
+        $el.val(0);
+      }
+    });
+
+    // data-sum-selector will sum all the elements that match
+    // the given selector and display the value in the current element
+    // Example:
+    //
+    // <input class='a' type='text'>
+    // <input class='a' type='text'>
+    // <input class='a' type='text'>
+    // <input class='sum-of-all-a' type='text' data-sum-selector='.a'>
+    $('[data-sum-selector]').each(function(i, item) {
+      var $el = $(item);
+      var selector = $el.attr('data-sum-selector');
+
+      $(selector).on('change', function(e) {
+        sum = 0
+        $(selector).each(function(j, item) {
+          value = parseFloat($(item).val(), 10)
+          if (isNaN(value)) { return; }
+          sum += value;
+        });
+
+        $el.val(sum);
+        $el.trigger('change');
+      });
+    });
+
+    // special case for NET (B - A) calculation
+    var typesOfAmounts = 'iamt samt camt csamt'.split(' ');
+    var getNetClassname = function(type) { return '.itc_net' + type };
+    var getElgClassname = function(type) { return '.itc_elg_' + type + '_total_sum' };
+    var getAvlClassname = function(type) { return '.itc_avl_' + type + '_total_sum' };
+
+    typesOfAmounts.forEach(function(type) {
+      $(getElgClassname(type) + ', ' + getAvlClassname(type)).on('change', function(e) {
+        var elg = parseFloat($(getElgClassname(type)).val(), 10);
+        var avl = parseFloat($(getAvlClassname(type)).val(), 10);
+        elg = isNaN(elg) ? 0 : elg;
+        avl = isNaN(avl) ? 0 : avl;
+        var net = elg - avl;
+        $(getNetClassname(type)).val(net);
+      });
+    });
+  });
+</script>

@@ -1,0 +1,62 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  password_hint: "Minimum eight characters, at least one uppercase, one lowercase and one number.No special character like *,@,! etc."
+  admin:
+    actions:
+      order_payment:
+        title: "Update offline payment details"
+        menu: "Order payment"
+        breadcrumb: "Order payment"
+      export_eway_log:
+        title: "Export Eway Log"
+        menu: "Export Eway Log"
+        breadcrumb: "Export Eway Log"
+  activerecord:
+    errors:
+      models:
+        domain:
+          attributes:
+            name:
+              blank: "Domain can’t be blank - Please enter an eight character (all alphabets) name"
+              wrong_length: "Domain Name should be eight characters (all alphabets)"
+              invalid: "Domain name can only contain alphabets"
+              taken: "Domain %{attribute} has already been taken"
+        gstin:
+          attributes:
+            gstin_number:
+              blank: "Gstin number can’t be blank – Please enter all the fifteen character. "
+            state_code:
+              wrong_length: "State code should be two characters"
+              invalid: "State code is not in the correct format for eg 03, 27, etc"
+            username:
+              blank: "User Name created on the GST Portal can’t be blank"
+        user:
+          attributes:
+            email:
+              taken: "This email has already been used in the domain"
+            password:
+              too_short: "%{model} %{attribute} is too short (minimum is 8 characters)"
+      messages:
+        blank: "%{model} %{attribute} can't be blank"
+        invalid: "%{model} %{attribute} is invalid"

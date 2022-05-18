@@ -1,0 +1,27 @@
+<div class="snf-form text-align-left">
+  <%= simple_form_for([:dashboard, @domain, @user], remote: true) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :name, required: true, placeholder: "Must be alphabets" %>
+      <%= f.input :email, required: true, autofocus: true, 
+                  placeholder: "example@domain.com", as: :string %>
+      <%= f.input :phone_number, label: "Mobile Number", 
+                  placeholder: "eg. 8805XXXX12",
+                  required: true, autofocus: false %>
+    </div>
+    <%= yield %>
+    <div class="button-align">
+      <%= f.button :submit, action %>
+      <%= f.button :button, 'RESET', type:'reset', class: 'big' %>
+      <%= link_to 'BACK', dashboard_domain_users_path(@domain),
+        class: 'btn btn-default big' %>
+    </div>
+  <% end %>
+</div>
+<script>
+  var action = '<%= action %>';
+  if(action == "SHOW USER") {
+    $("#edit_user_<%= @user.id %> :input").prop("disabled", true);
+    $("#edit_user_<%= @user.id %> .button-align").hide();
+  }
+</script>

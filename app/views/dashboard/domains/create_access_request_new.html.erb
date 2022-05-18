@@ -1,0 +1,60 @@
+<div class="snf-container" align="center">
+  <div class="snf-heading text-align-left margin-bottom">
+    <h2>New Domain Registration</h2>
+    <div class="margin-bottom">
+      <label class="label-left">* Fields are mandatory</label>
+    </div>
+  </div>
+  <div class="show-otp-modal" style="display: none;"></div>
+  <div class="show-confirmation-email-modal" style="display: none;"></div>
+  <div class="snf-form text-align-left">
+    <%= simple_form_for(@domain,
+                        remote: true,
+                        url: create_access_request_admin_dashboard_domains_path,
+                        html: {class: 'admin-register', autocomplete: 'off'}) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :name, 
+                    input_html: { class: 'small-font' },
+                    label: "Domain Name", 
+                    required: true, placeholder: "Create your own domain name. Must be 8 alphabets.", as: :string %>
+        <label>Super User Details:</label>
+        <%= f.simple_fields_for :user do |u| %>
+          <%= u.input :name, 
+                      input_html: { class: 'small-font' }, 
+                      label: "Name",
+                      required: true,
+                      placeholder: "Name" %>
+          <%= u.input :email, 
+                      input_html: { class: 'small-font' }, 
+                      required: true,
+                      placeholder: "example@domain.com" %>
+          <%= u.input :phone_number, 
+                      input_html: { class: 'small-font' },
+                      required: true, 
+                      label: "Mobile Number", 
+                      placeholder: "eg: 8805XXXX12"%>
+          <%= u.input :password, 
+                      input_html: { class: 'small-font' }, 
+                      required: true,
+                      label: "Create Password", 
+                      placeholder: t(:password_hint) %>
+          <%= u.input :password_confirmation, 
+                      input_html: { class: 'small-font' }, 
+                      required: true,
+                      label: "Confirm Password", 
+                      placeholder: t(:password_hint) %>
+          <span id="pwmatch" class="glyphicon glyphicon-remove password-confirm-hint" style="color:#FF0004;"></span> Passwords Match            
+        <% end %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "CREATE DOMAIN", class: 'create-domain' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render partial: 'shared/user_verification' %>
+
+<script>
+  passwordMatch('#domain_user_attributes_password', '#domain_user_attributes_password_confirmation','.create-domain');
+</script>

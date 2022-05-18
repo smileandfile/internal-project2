@@ -1,0 +1,24 @@
+<%= simple_form_for [:dashboard, @role] do |f| %>
+
+  <%= f.input :name %>
+  <%= f.input :parent_id, collection: Role.all %>
+  
+  <div class="allowed-actions">
+    <%= f.input :allowed_actions , as: :array %>
+  </div>
+
+  <%= f.button :submit , class: 'btn btn-default' %>
+<% end %>
+<button class="add-action-button btn btn-default">Add additional action</button>
+<script>
+  $(document).ready(function() {
+    $('.add-action-button').on('click', function(ev){
+
+        var $lastActionField;
+        ev.preventDefault();
+        $lastActionField = $('input[name="role[allowed_actions][]"]:last-of-type').clone();
+        $lastActionField.val("");
+        return $(".allowed-actions").append($lastActionField);
+    })
+  });
+</script>

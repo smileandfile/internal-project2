@@ -1,0 +1,28 @@
+<li>
+  <%= active_link_to(new_dashboard_entity_path) do %>
+    <i class="fa fa-user fa-fw"></i>
+    Entity
+  <% end %>
+</li>
+<li>
+  <%= active_link_to(new_dashboard_gstin_path) do %>
+    <i class="fa fa-user fa-fw"></i>
+    GSTIN
+  <% end %>
+</li>
+<% if can? :create, Branch %>
+  <li>
+    <%= active_link_to(new_dashboard_branch_path) do %>
+      <i class="fa fa-user fa-fw"></i>
+      Branch
+    <% end %>
+  </li>
+<% end %>
+<% if current_user.domain_admin? %>
+  <li>
+    <%= active_link_to(new_dashboard_domain_user_path(current_user.domain)) do %>
+      <i class="fa fa-user fa-fw"></i>
+      User
+    <% end %>
+  </li>
+<% end %>

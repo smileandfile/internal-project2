@@ -1,0 +1,53 @@
+@import "variables";
+body {
+  min-height: 400px;
+}
+.dashboard-content {
+  min-height: 500px;
+  @media (max-width: $horizontal-phone-width) {
+    margin-top: 40px;
+  }
+}
+a {
+  font-family: $headings-font-family;
+}
+
+.extra-margin-bottom {
+  margin-bottom: 10px;
+}
+
+abbr[title="required"] {
+  text-decoration: none;
+  border: none;
+  float: right;
+}
+
+.admin-register {
+  abbr[title="required"] {
+    padding-left: 5px;
+  }
+}
+
+.get-access-items {
+  .panel-body {
+    overflow-x: auto;
+  }
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-align-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.small-font {
+  font-size: 12px;
+}

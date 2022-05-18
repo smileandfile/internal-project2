@@ -1,0 +1,30 @@
+<p>Dear Madam/Sir,</p>
+<p>Congratulations!</p>
+<p>The domain <%= @new_domain.name.upcase %> has been created successfully!</p>
+<p>You can create the following in the domain and get started with filing of GST returns and meeting other compliances:
+  <ul>
+    <li>All the entities for which you have taken a GST registration.</li>
+    <li>Individual GSTIN’s of all the states within each entity.</li>
+    <li>Users</li>
+  </ul>
+</p>
+<p>It is advisable to download the software from the Smile and File portal post creating the entities and GSTIN’s.
+   Install the software on your machine and start your journey towards seamless filing of GST returns.
+</p>
+<p>We offer you a host of features besides the normal compliances such as:
+  <ul>
+    <li>View your tax ledgers</li>
+    <li>Search on HSN and SAC Code</li>
+    <li>Find Tax rates</li>
+    <li>Search GSTIN numbers of your Vendors and Customers</li>
+    <li>Convert your proprietary data to Excel format</li>
+    <li>Online calculator for Place of supply and Time of supply</li>
+    <li>Links to important web sites relating to GST</li>
+    <li>Links for registration, generating challans and payment of taxes</li>
+  </ul>
+</p>
+<p>
+  In case you are interested in integrating your ERP / accounting software with the Smile and File software and want
+  assistance in developing a connector please write to us at <%= mail_to 'info@smileandfile.com',nil, { class: "underline" } %>.
+</p>
+<%= render 'common_mail_content' %>

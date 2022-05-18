@@ -1,0 +1,10 @@
+<p>Dear Madam/Sir,</p>
+
+<p><strong>Package ID: </strong> <%= @order.package.id %></p>
+<p><strong>Package Name: </strong> <%= @order.package.name %></p>
+<p><strong>Order ID: </strong> <%= @order.id %></p>
+<p><strong>Order Amount: </strong> <%= @order.amount %></p>
+
+<p>You can make payment by clicking below link</p>
+<h4><%= link_to 'make payment', @payment_url %></h4>
+<%= render 'common_mail_content' %>

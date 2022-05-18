@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="col-md-6 col-sm-12">
+    <h5>For I.T. Support and Product Service:</h5>
+    <br>
+    <p><strong>Email : </strong><a href="mailto:support@smileandfile.com">support@smileandfile.com</a></p>
+    <p><strong>Contact no: </strong><a href="tel:02232686859">022-32686859</a></p>
+    <hr>
+    <h5>For sales support: </h5>
+    <p><strong>Email : </strong><a href="mailto:sales@smileandfile.com">sales@smileandfile.com</a></p>
+    <p><strong>Contact no: </strong><a href="tel:02232676567">022-02232676567</a></p>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <h5>OR PLEASE PROVIDE THE FOLLOWING DETAILS:</h5>
+    <%= simple_form_for(@contact) do |f| %>
+      <div class= "row">             
+        <div class="col-sm-3 access-form-label">
+          <%= f.label :name %>
+        </div>
+        <div class="col-sm-9 access-form-input">
+          <%= f.input :name, label: false %>
+        </div>
+      </div>           
+      <div class= "row">             
+        <div class="col-sm-3 access-form-label">
+          <%= f.label :email %>
+        </div>
+        <div class="col-sm-9 access-form-input">
+          <%= f.input :email, label: false %>
+        </div>
+      </div>           
+      <div class= "row">             
+        <div class="col-sm-3 access-form-label">
+          <%= f.label :mobile_number %>
+        </div>
+        <div class="col-sm-9 access-form-input">
+          <%= f.input :mobile_number, label: false %>
+        </div>
+      </div>           
+      <div class= "row">             
+        <div class="col-sm-3 access-form-label">
+          <%= f.label :comment %>
+        </div>
+        <div class="col-sm-9 access-form-input">
+          <%= f.input :comment, label: false %>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="col-sm-12 text-right">
+          <%= f.button :submit, 'SUBMIT' %>
+        </div>
+      </div>     
+    <% end %>
+  </div>
+</div>
+

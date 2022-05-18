@@ -1,0 +1,9 @@
+<p>Dear Madam/Sir,</p>
+<p>You have selected the following subscription package for your domain <strong><%= @current_user.domain.name.upcase %></strong> on the Smile and File Portal: </p>
+<p><strong>Package ID: </strong> <%= @order.package.id %></p>
+<p><strong>Package Name: </strong> <%= @order.package.name %></p>
+<p><strong>Order ID: </strong> <%= @order.id %></p>
+<p><strong>Order Amount: </strong> <%= @order.amount %></p>
+<h3>Your domain <%= @current_user.domain.name.upcase %> is successfully activated. Please find below the copy on invoice.</h3>
+
+<%= render 'common_mail_content' %>

@@ -1,0 +1,65 @@
+<% content_for :heading do %>
+  <h3>Change your password</h3>
+<% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :reset_password_token, as: :hidden %>
+  <%= f.full_error :reset_password_token %>
+
+  <div class= "row">             
+    <div class="col-xs-3 access-form-label">
+      <%= f.label :"New password"%>
+    </div>
+    <div class="col-xs-9 access-form-input">
+      <%= f.input :password, 
+                  label: false, 
+                  autofocus: true, 
+                  placeholder: "Password",
+                  data: { toggle: "tooltip", title: t(:password_hint )} 
+                  %>
+    </div>
+  </div>
+
+  <div class= "row">             
+    <div class="col-xs-3 access-form-label">
+      <%= f.label :"Confirm Password" %>
+    </div>
+    <div class="col-xs-9 access-form-input">
+      <%= f.input :password_confirmation, 
+                  label: false,  
+                  placeholder: "Confirm your password" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 access-form-label">
+      <span id="pwmatch" class="glyphicon glyphicon-remove password-confirm-hint" style="color:#FF0004;"></span> Passwords Match
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-9 change-password-button set-button margin-bottom">
+      <%= f.button :submit, "Change Password", class: 'btn-default small change-password' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-9">
+      <div class="access-align-btn">
+        <%= link_to new_user_session_path, 
+          class: 'btn btn-default small' do %>
+          <span>Login</span>
+        <% end %>
+        <%= link_to 'http://smileandfile.com/', 
+          class: 'btn btn-default small' do %>
+          <span>Cancel</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% content_for :container_footer do %>
+  <p style="color: red;">Hint: Password should be 8 characters, 1 Capital and 1 numeric .No special characters</p>
+<% end %>
+<script>
+  passwordMatch('#user_password', '#user_password_confirmation', '.change-password');
+</script>

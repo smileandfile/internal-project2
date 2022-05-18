@@ -1,0 +1,137 @@
+<% if @current_user.present? %>
+   <% current_user = @current_user %>
+<% end %>
+<div class="container invoice">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="invoice-title">
+        <h2 align="center"><%=  @order.active? ? "TAX INVOICE": "DRAFT INVOICE"%></h2>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-4">
+          To, <br>
+          <span><%= @order.billing_name&.titlecase %></span><br>
+          <span><%= @order.billing_address %>,</span><br>
+          <span><%= "#{@order.billing_city}, #{@order.billing_zip}" %> ,</span><br>
+          <span><%= @order.billing_state_full_name %></span><br>
+
+          <span>GSTN No: <%= @order.gstin_number %></span>
+        </div>
+        <div class="col-xs-4">
+          <p></p>
+          <p><strong>Contact Mobile No:</strong> <%= @order.billing_tel %></p>
+          <p><strong>Contact Email Id:</strong> <%= @order.billing_email %></p>
+          <% if @order.active? %>
+            <p><strong>Order # </strong> <%= @order.id %></p>
+          <% end %>
+        </div>
+        <div class="col-xs-4">
+          <% if @order.active? %>
+            <p><strong>INVOICE # </strong> <%= @order.invoice_number %></p>
+          <% else %>
+            <p><strong>Order # </strong> <%= @order.id %></p>
+          <% end %>
+          <p><strong>Date</strong> <%= format_date(@order.created_at) %></p>
+          <p><strong>Place of Supply:</strong> <%= @order.billing_state_full_name_with_code %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="invoice-table-header row">
+    <div class="col-xs-2">
+      <strong>Sr. No.</strong>
+    </div>
+    <div class="col-xs-4">
+      <strong>Particular</strong>
+    </div>
+    <div class="col-xs-3">
+      <strong>Package ID</strong>
+    </div>
+    <div class="col-xs-3">
+      <strong>Amount(INR)</strong>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-2">
+      <p>1</p>
+    </div>
+    <div class="col-xs-4">
+      <p><%= @order.package.name %></p>
+      <%
+        valid_from = Time.now
+        if @order.payment_mode == "online"
+          valid_from = @order.trans_date.present? ? @order.trans_date : @order.created_at
+        else
+          valid_from = @order.offline_payment_date.nil? ?  @order.created_at : @order.offline_payment_date
+        end
+        if @order.duration_months.nil?
+          period = "#{format_date(valid_from)} To #{format_date(Time.now + @order.package.expiry_duration_months.months)}"
+        else
+          period = "#{format_date(valid_from)} To #{format_date(Time.now + @order.duration_months.months)}"
+        end
+      %>
+      <p><strong>Validity: </strong>From <%= period %></p>
+    </div>
+    <div class="col-xs-3">
+      <p><%= @order.package.id %></p>
+    </div>
+    <div class="order-amount col-xs-3">
+      <p><%= two_decimal_number(@order.without_tax_amount) %></p>
+    </div>
+  </div>
+  <% if @order.package.package_type.to_sym == :gst_suvidha_kendra %>
+    <div class="row">
+      <div class="col-xs-2">
+        2
+      </div>
+      <div class="col-xs-4">
+        <p>Initially deposit amount for credit</p>
+      </div>
+      <div class="col-xs-3">
+      </div>
+      <div class="order-amount col-xs-3">
+        <p><%= two_decimal_number(@order.package.take_deposit) %></p>
+      </div>
+    </div>
+  <% end %>
+
+
+
+  <div class="row">
+    <div class="col-xs-offset-6 col-xs-3">
+      <p>Sub Total</p>
+      <% if @order.is_intra_state_order %>
+        <p>Central GST 9%</p>
+        <p>State GST 9%</p>
+      <% else %>
+        <p>Integrated GST 18%</p>
+      <% end %>
+    </div>
+    <div class="order-amount col-xs-3">
+      <p><%= two_decimal_number(@order.without_tax_amount + @order.package.take_deposit ) %></p>
+      <br>
+      <% if @order.is_intra_state_order %>
+        <p><%= two_decimal_number(@order.cgst) %></p>
+        <br>
+        <p><%= two_decimal_number(@order.sgst) %></p>
+      <% else %>
+        <p><%= two_decimal_number(@order.igst) %></p>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-offset-6 col-xs-3">
+      <p><strong>Total</strong></p>
+    </div>
+    <div class="order-amount col-xs-3">
+      <p><strong><%= two_decimal_number(@order.amount) %></strong></p>
+    </div>
+  </div>
+  <hr>
+  <p><strong>Note: </strong>Tax Payable on reverse charge - No</p>
+  <p><strong>Our GSTIN No: </strong>27AABCS4052Q1ZY</p>
+</div>

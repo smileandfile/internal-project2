@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Select GSTIN for filling GSTR3b*</<h3>
+      <%= form_tag save_current_session_gstin_dashboard_gstn_base_index_path  do %>
+        <%= select_tag :gstin_number,options_for_select(@gstins.map { |g| ["#{g.gstin_number} (#{g.username}) (#{g.entity.company_name})", g.id]}), class: "form-control select required snf-form-input" %>
+        <br>
+        <label>Return Period*</label>
+        <br>
+        <div class="row">
+          <div class="col-sm-6">
+            <%= select_month(0 , { prompt: 'Choose month', use_two_digit_numbers: true },  class: "form-control select required snf-form-input") %>             
+          </div>
+          <div class="col-sm-6">
+            <%= select_year(0 , {prompt: 'Choose Year'}, class: "form-control select required snf-form-input") %>             
+          </div>
+        </div>
+        <br>  
+        <%= submit_tag "OK", class: 'btn btn-default'  %>
+        <%= button_tag "Reset", type: :reset, class: 'btn btn-default' %>
+      <% end %>
+    </div>
+  </div>
+</div>

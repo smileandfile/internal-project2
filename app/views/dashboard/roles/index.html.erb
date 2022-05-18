@@ -1,0 +1,35 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h2>
+        ROLES
+        <%= link_to new_dashboard_role_path do %>
+          <i class="fa fa-plus"></i>
+        <% end %>
+
+      </h2>
+      <div class="table-responsive">
+        <table width="100%" class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Parent</th>
+              <th colspan="3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @roles.each do |role| %>
+              <tr>
+                <td><%= role.name %></td>
+                <td><%= role.parent_name %></td>
+                <td><%= link_to 'Show', dashboard_role_path(role) %></td>
+                <td><%= link_to 'Edit', edit_dashboard_role_path(role) %></td>
+                <td><%= link_to 'Delete', dashboard_role_path(role), method: :delete, data: { confirm: "Are you sure?" } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

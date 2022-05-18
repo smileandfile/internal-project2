@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>GSTIN Number</th>
+        <th>State Code</th>
+        <th>Registration Date</th>
+        <th>Entity Name</th>
+        <th colspan="3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% gstins.each do |gstin| %>
+        <tr>
+          <td><%= gstin.gstin_number %></td>
+          <td><%= gstin.state_code %></td>
+          <td><%= format_date(gstin.registration_date) %></td>
+          <td><%= gstin.entity.company_name %></td>
+          <td><%= link_to 'Show', dashboard_gstin_path(gstin) %></td>
+          <% if can? [:update, :destroy], Gstin %>
+            <td><%= link_to 'Edit', edit_dashboard_gstin_path(gstin) %></td>
+            <td><%= link_to 'Delete', dashboard_gstin_path(gstin), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

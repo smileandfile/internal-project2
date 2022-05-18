@@ -1,0 +1,21 @@
+// on submit, the form is scrolled to the top
+$('html, body').animate({
+  scrollTop: $('#navbar-wrapper').offset().top
+}, 'fast');
+<% if !@model.nil? && @model.errors.any?  %>
+  var errors = <%= raw @model.errors.messages.to_json %>
+  var errorToDisplay = "";
+  Object.keys(errors).forEach(function(error) {
+    errors[error].forEach(function(message) {
+      errorToDisplay +=  `${message}` + '<br>'
+    });
+  });
+  $('.show-errors-notice-box').html('<ul>' + errorToDisplay + '</ul>');
+  $('.show-errors-notice-box').show();
+<% else %>
+  $('.show-errors-notice-box').hide();
+  $('form')[0].reset(); 
+  $('.show-successfully-created-modal').show();
+  $('.show-successfully-created-modal').html("<%= escape_javascript(render partial: 'shared/successfully_created_modal', 
+                                                                          locals: { type: type , message: message }) %>");
+<% end %>

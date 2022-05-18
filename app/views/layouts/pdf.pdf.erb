@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+  </head>
+  <body onload='number_pages'>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <%= image_tag wicked_pdf_asset_base64('sfl-logo-final.png') %>
+        </div>
+        <div class="col-xs-6 invoice-header">
+          <span>
+            <strong>Smile and File</strong><br>
+            <strong>A Division of Shalibhadra Finance Limited</strong>
+          </span>
+          <p>  
+            A-103, Moti Vihar Building,<br>
+            Behind IDBI Bank, NSB Road,<br>
+            Mulund West,<br>
+            Mumbai 400 080<br>
+            Maharashtra
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

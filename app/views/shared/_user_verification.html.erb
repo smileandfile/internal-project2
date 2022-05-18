@@ -1,0 +1,37 @@
+<div id="validateOTPEmail" class="modal fade" role="dialog" style="display: none;">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= current_user&.user? ? 'Please verify your details' : 'Domain Created sucessfully' %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="otp-validation" <%= raw current_user&.both_otps_validated? ? 'style="display: none;"' : '' %>>
+          <p>To activate your Domain, please verify your email id and mobile number.</p>
+
+          <%= render partial: 'shared/otp_form', locals: { type: :mobile } %>
+          <hr>
+          <%= render partial: 'shared/otp_form', locals: { type: :email } %>
+        </div>
+        <div class="otp-validation-success" <%= raw current_user&.both_otps_validated? ? '' : 'style="display: none;"' %>>
+          <% admin_message = "Congratulations your domain has been created. You may now proceed to select your subscription package." %>
+          <% user_message = "Your user account has been activated" %>
+          <p><%= current_user&.user? ? user_message : admin_message %></p>
+          <%= link_to 'OK', dashboard_path, class: "btn btn-default btn-block" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function show_dashboard_btn() {
+    var show_dashboard_btn = <%= current_user&.email_confirmed? && current_user&.phone_confirmed? %>
+    if(show_dashboard_btn) {
+      $('.show-dashboard-btn').show();
+    }
+  }
+  $("#validateOTPEmail").modal();
+  <% if current_user&.domain&.present? && !current_user.domain.is_active %>
+    $("#validateOTPEmail").show();
+  <% end %>
+</script>

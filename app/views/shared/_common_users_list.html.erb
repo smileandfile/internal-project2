@@ -1,0 +1,25 @@
+
+<div class="table-responsive">
+  <table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th colspan="3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= link_to 'Show', dashboard_domain_user_path(current_user.domain, user) %></td>
+          <td><%= link_to 'Edit', edit_dashboard_domain_user_path(current_user.domain, user) %></td>
+          <% if can? :destroy, user %>
+            <td><%= link_to 'Delete', dashboard_domain_user_path(current_user.domain, user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

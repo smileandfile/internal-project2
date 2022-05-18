@@ -1,0 +1,24 @@
+// Place all the styles related to the Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.invoice {
+  hr {
+    border-bottom:1px solid #cecece;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.order-amount {
+  p {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+  }
+}
+
+#makePaymentDetails {
+  .modal-content {
+    text-align: left;
+  }
+}

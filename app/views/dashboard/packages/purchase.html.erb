@@ -1,0 +1,71 @@
+<div class="snf-container" align="center">
+  <div class="snf-heading text-align-left margin-bottom">
+    <h2>Provide your company details - For Billing purposes</h2>
+    <div class="margin-bottom">
+      <label class="label-left">* Fields are mandatory</label>
+    </div>
+  </div>
+  <div class="snf-form text-align-left">
+    <%= simple_form_for ([:dashboard, @order]), html: {class: 'form-inputs company-details'} do |f| %>
+      <%= f.input :billing_name, label: "Name of the Company",
+                  placeholder: "Can be Alphanumeric",
+                  required: true %>
+      <%= f.input :pan_number, label: "PAN No.", 
+                  placeholder: "Valid PAN No, Alphanumeric", 
+                  required: true %>
+      <%= f.input :gstin_number, label: "GSTIN No.",
+                  placeholder: "Valid GSTIN No, Alphanumeric",
+                  required: true %>
+      <%= f.input :billing_address, 
+                  label: "Address", 
+                  placeholder: "Address",
+                  input_html: {rows: 4},
+                  required: true %>
+      <%= f.input :billing_zip, 
+                  label: "Pin Code", 
+                  placeholder: "Pin Code", 
+                  required: true %>
+      <%= f.hidden_field :billing_country, value: 'India' %>
+      <%= f.input :billing_state, 
+                  collection: Gstin.states_for_select,
+                  label: "State", 
+                  required: true %>
+      <%= f.input :billing_city, 
+                  label: "City", 
+                  placeholder: "City", 
+                  required: true %>
+      <%= f.input :billing_tel, label: "Mobile Number", 
+                  input_html: { value: current_user.phone_number },
+                  placeholder: "eg: 8805XXXX12", required: true %>
+      <%= f.input :billing_email, label: "Email",
+                  input_html: { value: current_user.email},
+                  placeholder: "example@domain.com", required: true %>
+      <%= f.hidden_field :package_id, value: @package_id %>
+      <%= f.hidden_field :sub_package_id, value: @sub_package_id if @sub_package_id.present? %>
+      <%= f.hidden_field :duration_column, value: @duration_column if @duration_column.present? %>
+      <%= f.hidden_field :payment_mode_lock, value: false %>
+      <br>
+      <div class="terms-agree-checkbox">
+        <input type="checkbox" name="terms" id="terms" 
+               value="accepted" />
+        <span>* I agree to <%= link_to 'Terms & Conditions', '#', data: { toggle: 'modal', target: "#packageTermsConditions"} %>
+        </span>
+      </div>
+      
+      <button type="button" class="btn btn-default extra-margin-bottom" data-toggle= "modal", data-target= "#makePayment">Make Payment</button>
+      <!-- Trigger the modal with a button -->
+
+      <%= render 'shared/package_payment_modal', f: f %>
+    <% end %>
+  </div>
+</div>
+<%= render 'shared/package_terms_conditions' %>
+<script>
+  $('.company-details').submit(function(event){
+    if($('#terms').is(':checked') == false){
+        event.preventDefault();
+        alert("For purchasing package, you must accept our terms and conditions!");
+        return false;
+    }
+  });
+</script>

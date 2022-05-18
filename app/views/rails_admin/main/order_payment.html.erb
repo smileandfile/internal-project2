@@ -1,0 +1,28 @@
+<%= form_for @object, url: order_payment_url(model_name: @abstract_model.to_param), method: :put do |f| %>
+  <label class="control-label">Bank Name</label><br>
+  <input name="order[bank_name]" value="<%= @object.bank_name %>" class="snf-form-input form-control"></input>
+  <br>
+  <label class="control-label">UTR NUMBER</label><br>
+  <input name="order[utr_number]" value="<%= @object.utr_number %>" class="snf-form-input form-control"></input>
+  <br>
+  <label class="control-label">CHEQUE NUMBER</label><br>
+  <input name="order[cheque_number]" value="<%= @object.cheque_number %>" class="snf-form-input form-control"></input>
+  <br>
+  <label class="control-label">DATE OF REMITTANCE</label><br>
+  <input name="order[date_remittance]" value="<%= @object.date_remittance %>" class="snf-form-input form-control datepicker"></input>
+  <br>
+  <br>
+  <label>Subscription</label>
+  <select name="order[subscription]">
+    <% Order.subscriptions.keys.map do |subscription| %>
+      <option value="<%= subscription %>" <%= 'selected' if @object.subscription == subscription %>><%= subscription.titleize %></option>
+    <% end %>
+  </select>
+  <label>Status</label>
+  <select name="order[status]">
+    <% Order.statuses.keys.map do |order_status| %>
+      <option value="<%= order_status %>" <%= 'selected' if @object.status == order_status %>><%= order_status.titleize %></option>
+    <% end %>
+  </select>
+  <%= f.submit %>
+<% end %>

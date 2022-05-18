@@ -1,0 +1,9 @@
+<% if @gstins.present? %>
+  $('.entity-gstins-list').show();
+  $('.gstin-heading').show();
+  $('.gstin-heading').html("<%= entity.company_name.upcase %> GSTIN LIST")
+  $('.entity-gstins-list').html("<%= escape_javascript(render partial: 'shared/common_gstins_list', locals: { gstins: @gstins }) %>");
+<% else %>
+  $('.entity-gstins-list').hide();
+  $('.gstin-heading').hide();
+<% end %>

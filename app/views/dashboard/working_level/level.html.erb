@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <h1>What is Domain working level?</h1>
+      <div class="well working-level">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin turpis urna, ut ullamcorper mi rhoncus sed. Sed sollicitudin elit a eleifend aliquet. Suspendisse malesuada nibh rhoncus, ultricies velit vel, interdum tellus. Sed interdum iaculis nisi. Aliquam ornare magna auctor, rhoncus massa eu, tempus dui. Maecenas mollis nibh at dignissim ultrices. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et facilisis lorem. Curabitur eu faucibus purus.
+        Phasellus vitae lobortis massa, non sollicitudin nisi. Nunc ullamcorper lorem justo, in ultrices mauris porta vel. Morbi mi mi, lobortis nec ullamcorper ac, mattis sed elit. Ut eleifend vel metus eget dapibus. Ut venenatis nec massa a aliquet. Donec efficitur nibh leo, ac blandit diam venenatis ut. Morbi quis sollicitudin ipsum. Aliquam pellentesque id mauris non pharetra. Phasellus pulvinar, metus vel tristique auctor, leo nisi euismod purus, ut imperdiet dui turpis ac est. Phasellus gravida lorem eu erat lobortis, nec hendrerit urna fermentum. Aliquam iaculis dolor faucibus efficitur varius. Nullam ligula lacus, tempor in ultrices non, luctus sed orci. Etiam dignissim, lorem vel facilisis tristique, ante diam vulputate enim, in cursus nulla felis id felis.
+
+        Sed suscipit tincidunt cursus. Nunc sollicitudin lectus vel mi egestas mattis. Mauris aliquam ligula et tincidunt sagittis. Aenean in purus tortor. Quisque placerat lobortis neque, iaculis sagittis tortor rhoncus suscipit. Nulla facilisi. Sed mattis iaculis magna, auctor viverra sapien imperdiet sed. Fusce fringilla nulla et urna lobortis tempor.
+
+        Duis et faucibus urna. Praesent elementum elit sit amet enim finibus ullamcorper. Vestibulum ultricies pharetra metus, maximus consectetur dui vehicula vitae. Ut mattis ex imperdiet turpis interdum mollis vel eget mi. Suspendisse ultricies nisl ac ipsum posuere, ut efficitur eros ultricies. Phasellus eget euismod risus. Nulla condimentum cursus nisi, id eleifend turpis cursus sed. Nam a est imperdiet, tempus urna ut, posuere nunc. Integer at iaculis leo, in placerat nulla. Duis nec enim vitae felis viverra laoreet. Vivamus at quam dolor.
+
+        Integer consectetur ut risus eget fringilla. Maecenas tincidunt tellus sed ornare feugiat. Nam finibus augue eu ex condimentum ultricies. In et tellus suscipit erat varius dictum at sed enim. Cras quis elementum mauris. Nunc pulvinar sem at scelerisque hendrerit. Proin fringilla justo non quam venenatis mollis. Integer viverra, ipsum in tincidunt consequat, tortor magna efficitur tellus, vitae ullamcorper nulla mauris in elit. Duis sed velit at tellus ultricies laoreet. Curabitur faucibus ornare massa ac consequat. In rhoncus sollicitudin dui, non commodo enim placerat id.
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <h1>Set Domain working level</h1>
+
+      <%= notice %>
+      <%= form_for @domain, url: set_dashboard_domain_working_level_index_path(@domain), method: :post  do |f| %>
+        <%= f.select(:working_level, Domain.working_levels.keys.map {|level| [level.titleize, level]}, wrapper_html: {class: "col-sm-12"})  %>
+        <%= f.submit "Set Working Level", class: "btn btn-default" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

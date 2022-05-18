@@ -1,0 +1,40 @@
+<h3>File Downloads</h3>
+<div class="table-responsive">
+  <table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Timing</th>
+        <th>Request Info</th>
+        <th>File Info</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @file_downloads.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td>
+              <strong>Created Time</strong> - <%= format_date_for_display(item.created_at) %><br/>
+              <strong>Last Updated Time</strong> - <%= format_date_for_display(item.updated_at) %><br/>
+            </td>
+            <td>
+              <strong>Token</strong> - <%= item.token %><br/>
+              <strong>EST</strong> - <%= item.est %><br/>
+              <strong>Estimated Time</strong> - <%= item.created_at + item.est.to_i.minutes %><br/>
+            </td>
+            <td>
+              <strong>File Count</strong> - <%= item.file_count %><br/>
+            </td>
+            <td>
+              <% if item.log.present? %>
+                <% item.log['responses'].each do |response| %>
+                  <%= response['time'] %> - <%= response['message'] %><br/>
+                <% end %>
+              <% end %>
+            </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

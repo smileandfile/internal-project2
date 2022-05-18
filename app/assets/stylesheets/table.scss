@@ -1,0 +1,31 @@
+
+/**
+ * Table Decoration
+ */
+table.snf-table {
+  font-size: 14px;
+
+  tbody > th,
+  tbody > td,
+  th,
+  td {
+    border: 2px solid #34BCF6;
+    text-align: center;
+    padding: 15px;
+  }
+  th {
+    color: black;
+  }
+  tr:nth-child(even) td {
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+  tr:nth-child(even):hover td {
+    background-color: rgba(128, 128, 128, 0.15);
+  }
+  tr:nth-child(odd) td {
+    background-color: rgba(128, 128, 128, 0.025);
+  }
+  tr:nth-child(odd):hover td {
+    background-color: rgba(128, 128, 128, 0.05);
+  }
+}

@@ -1,0 +1,31 @@
+<% if @message.present? %>
+  <pre><%= JSON.pretty_generate(@message.as_json) %></pre>
+<% else %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <% if @errors.length > 0 %>
+          <div class="alert alert-warning">
+            Schema Validation Errors:
+            <ul>
+              <% @errors.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <pre><%= JSON.pretty_generate(@payload.as_json) %></pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h5>RESPONSE</h5>
+        <pre><%= JSON.pretty_generate(@response.as_json) %></pre>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,223 @@
+class Api::Gstr9aController < Api::GstnBaseController
+  include SelectHashValues
+  include Swagger::Blocks
+  before_action :get_return_period, only: [:file_details, :calculate_details]
+  respond_to :json
+
+  swagger_path '/api/gstr9a/file_details' do
+    operation :post do
+      security do
+        key :access_token, []
+        key :client, []
+        key :uid, []
+        key :token_type, []
+        key :expiry, []
+        key :domain_name, []
+      end
+      key :description, 'Get GSTR9 File Details'
+      key :operationId, 'gstr9File'
+      key :tags, ['gstr9a']
+      parameter do
+        key :name, :'gstin-id'
+        key :in, :header
+        key :description, 'gstin-id'
+        key :required, true
+        key :type, :string
+      end
+      parameter do
+        key :name, :gstr9
+        key :in, :body
+        key :type, :string
+        schema do
+          key :'$ref', :BaseReturnPeriodModel
+        end
+      end
+      response 200 do
+        schema do
+          key :type, :array
+          items do
+            key :'$ref', :BaseReturnPeriodModel
+          end
+        end
+      end
+      response :unauthorized
+      response :not_acceptable
+      response :requested_range_not_satisfiable
+    end
+  end
+
+  def file_details
+    gstr9a = Gsp::Gstr9a.new(@@gsp_api)
+    response = gstr9a.file_details(@data)
+    render json: response, status: :ok
+  end
+
+  swagger_path '/api/gstr9a/file_dsc' do
+    operation :post do
+      security do
+        key :access_token, []
+        key :client, []
+        key :uid, []
+        key :token_type, []
+        key :expiry, []
+        key :domain_name, []
+      end
+      key :description, ''
+      key :operationId, 'gstr9File'
+      key :tags, ['gstr9a']
+      parameter do
+        key :name, :'gstin-id'
+        key :in, :header
+        key :description, 'gstin-id'
+        key :required, true
+        key :type, :string
+      end
+      parameter do
+        key :name, :gstr9
+        key :in, :body
+        key :type, :string
+        schema do
+          allOf do
+            schema do
+              key :'$ref', :DscRequest
+            end
+            schema do
+              key :'$ref', :GstrDataModel
+            end
+          end
+        end
+      end
+      response 200 do
+        schema do
+          key :type, :array
+          items do
+            key :'$ref', :GstrDataModel
+          end
+        end
+      end
+      response :unauthorized
+      response :not_acceptable
+      response :requested_range_not_satisfiable
+    end
+  end
+
+  def file_dsc
+    gstr9a = Gsp::Gstr9a.new(@@gsp_api)
+    secure_params = params.permit(:return_period, :pan_number, :signed_data, data: {})
+    payload = {
+      "sid": secure_params[:pan_number],
+      "return_period": secure_params[:return_period],
+      "data": secure_params[:data],
+      "pkcs7_data": secure_params[:signed_data],
+      "st": "DSC"
+    }
+    response = gstr9a.file_gstr9a(payload)
+    render json: response, status: :ok
+  end
+
+  swagger_path '/api/gstr9a/save_data' do
+    operation :post do
+      security do
+        key :access_token, []
+        key :client, []
+        key :uid, []
+        key :token_type, []
+        key :expiry, []
+        key :domain_name, []
+      end
+      key :description, ''
+      key :operationId, 'gstr9File'
+      key :tags, ['gstr9a']
+      parameter do
+        key :name, :'gstin-id'
+        key :in, :header
+        key :description, 'gstin-id'
+        key :required, true
+        key :type, :string
+      end
+      parameter do
+        key :name, :gstr9
+        key :in, :body
+        key :type, :string
+        schema do
+          allOf do
+            schema do
+              key :'$ref', :Gstr9DataModel
+            end
+          end
+        end
+      end
+      response 200 do
+        schema do
+          key :type, :array
+          items do
+            key :'$ref', :Gstr9DataModel
+          end
+        end
+      end
+      response :unauthorized
+      response :not_acceptable
+      response :requested_range_not_satisfiable
+    end
+  end
+
+  def save_data
+    gstr9a = Gsp::Gstr9a.new(@@gsp_api)
+    secure_params = params.permit(:fp, data: {})
+    payload = {
+      fp: secure_params[:fp],
+      data: secure_params[:data]
+    }
+    response = gstr9a.save_data(payload)
+    render json: respone, status: :ok
+  end
+
+  swagger_path '/api/gstr9a/calculate_details' do
+    operation :post do
+      security do
+        key :access_token, []
+        key :client, []
+        key :uid, []
+        key :token_type, []
+        key :expiry, []
+        key :domain_name, []
+      end
+      key :description, 'Get GSTR9 File Details'
+      key :operationId, 'gstr9File'
+      key :tags, ['gstr9a']
+      parameter do
+        key :name, :'gstin-id'
+        key :in, :header
+        key :description, 'gstin-id'
+        key :required, true
+        key :type, :string
+      end
+      parameter do
+        key :name, :gstr9
+        key :in, :body
+        key :type, :string
+        schema do
+          key :'$ref', :BaseReturnPeriodModel
+        end
+      end
+      response 200 do
+        schema do
+          key :type, :array
+          items do
+            key :'$ref', :BaseReturnPeriodModel
+          end
+        end
+      end
+      response :unauthorized
+      response :not_acceptable
+      response :requested_range_not_satisfiable
+    end
+  end
+
+  def calculate_details
+    gstr9a = Gsp::Gstr9a.new(@@gsp_api)
+    response = gstr9a.calculate_details(@data)
+    render json: response, status: :ok
+  end
+
+end

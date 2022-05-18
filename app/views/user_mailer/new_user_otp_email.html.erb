@@ -1,0 +1,14 @@
+<p>Dear Madam/Sir,</p>
+<% if @new_user.admin? %>
+  <p>We welcome you with great pleasure. You are in the process of creating a new Domain on the Smile and File Portal for filing GST
+    returns and meeting other compliances.</p>
+  <p>Your domain has been created on our portal and needs to be activated.</p>
+<% else %>
+  <p>
+    We welcome you with great pleasure.
+    You are in the process of activating your user account on the Smile and File Portal for filing GST returns and meeting other compliances.
+  </p>
+<% end %>
+
+<p>This is to inform you that the OTP is <%= @new_user.email_otp %></p>
+<%= render 'user_mailer/common_mail_content' %>

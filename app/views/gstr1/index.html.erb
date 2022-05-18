@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>GSTN1</h1>
+    </div>
+  </div>
+</div>
+<div class="container ">
+  <div class="panel-group" id="faqAccordion">
+    <div class="panel panel-default ">
+      <div class="panel-heading accordion-toggle question-toggle collapsed"
+           data-toggle="collapse" data-parent="#faqAccordion"
+           data-target="#api0">
+        <h4 class="panel-title">
+          <h4>POST: '/api/gstn1/save_invoices'</h4>
+        </h4>
+      </div>
+      <div id="api0" class="panel-collapse collapse" style="height: 0px;">
+        <div class="panel-body">
+          <p>
+            <a href="/save_invoices">Save Invoices(PENDING)</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default ">
+      <div class="panel-heading accordion-toggle question-toggle collapsed"
+           data-toggle="collapse" data-parent="#faqAccordion"
+           data-target="#api1">
+        <h4 class="panel-title">
+          <h4>POST: "/api/gstn1/submit_gstr1"</h4>
+        </h4>
+      </div>
+      <div id="api1" class="panel-collapse collapse" style="height: 0px;">
+        <div class="panel-body">
+          <p>
+            FORM DATA WITH SAMPLE BODY DATA<br>
+            { method: 'POST',
+              url: '/api/gstn1/submit_gstr1',
+              headers: 
+               { 'content-type': 'application/x-www-form-urlencoded',
+                 'token-type': 'Bearer',
+                 expiry: '1501452663',
+                 uid: 'ankit@coderbhai.com',
+                 gstin_id: '1',
+                 client: 'nPRz16Ec5ics3SkWDiWfLg',
+                 'access-token': '8ziyD2V4i8XLPB0f599uTw' },
+              form: 
+               { data[gstin]: '27GSPMH0211G1Z3',
+                 data[ret_period]: '042017' } };
+
+            <a href="/submit_gstr1">Try It Now</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default ">
+      <div class="panel-heading accordion-toggle question-toggle collapsed"
+           data-toggle="collapse" data-parent="#faqAccordion"
+           data-target="#api2">
+        <h4 class="panel-title">
+          <h4>POST: "/api/gstn1/file_gstr1"</h4>
+        </h4>
+      </div>
+      <div id="api2" class="panel-collapse collapse" style="height: 0px;">
+        <div class="panel-body">
+          <p>
+          FORM DATA WITH SAMPLE BODY DATA<br>
+
+            { method: 'POST',
+
+              url: '/api/gstn1/file_gstr1', <br>
+
+              headers: 
+               { 'content-type': 'application/x-www-form-urlencoded',
+                 'token-type': 'Bearer',
+                 expiry: '1501452663',
+                 uid: 'ankit@coderbhai.com',
+                 gstin_id: '1',
+                 client: 'nPRz16Ec5ics3SkWDiWfLg',
+                 'access-token': '8ziyD2V4i8XLPB0f599uTw' },
+              form: <br>
+               { data: {"gstin"=>"37ABCDE9552F3Z4", "ret_period"=>"072016", "chksum"=>"AflJufPlFStqKBZ", "sec_sum"=>[{"sec_nm"=>"b2b", "chksum"=>"AflJufPlFStqKBZ", "ttl_rec"=>10, "ttl_val"=>12345, "ttl_igst"=>124.99, "ttl_cgst"=>3423, "ttl_sgst"=>5589.87, "ttl_cess"=>3423, "ttl_tax"=>1234, "cpty_sum"=>[{"ctin"=>"20GRRHF2562D3A3", "chksum"=>"AflJufPlFStqKBZ", "ttl_rec"=>10, "ttl_val"=>12345, "ttl_igst"=>124.99, "ttl_cgst"=>3423, "ttl_sgst"=>5589.87, "ttl_cess"=>3423, "ttl_tax"=>1234}]}]} } }
+               <br>
+            <a href="/file_gstr1">Try it now</a>    
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

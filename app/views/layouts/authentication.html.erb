@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GSTN-ASP</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'main' %>
+  </head>
+  <body class="snf-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <% if flash[:notice].present? %>
+            <div class="alert alert-success">
+              <%= flash[:notice] %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-sm-12 dashboard-content">
+          <div align="center"> 
+            <div class="login-container">
+              <%= yield :heading %>
+              <div class="row login-block margin-bottom">
+                <div class="col-sm-5 login-block-left ">
+                  <img src="<%= asset_path('sfl_login.jpg') %>"/>
+                </div>
+                <div class="col-sm-7 login-block-right ">
+                  <div class="row">
+                    <div class="col-sm-offset-2 col-sm-10 margin-bottom">
+                      <div class="snf-logo ">
+                        <img src="<%= asset_path('sfl-logo-final.png') %>"/>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="authentication-form">
+                      <%= yield %>
+                    </div>
+                </div>
+              </div>
+              <%= yield :container_footer %>
+            </div>
+            <% if request.path != edit_user_password_path %>
+              <div class="row">
+                <div class="col-sm-12">
+                  <%= link_to create_access_request_new_dashboard_domains_path, 
+                    class: 'btn btn-default small text-center' do %>
+                    <span>Sign Up</span>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90810853-7', 'auto');
+  ga('send', 'pageview');
+
+</script>

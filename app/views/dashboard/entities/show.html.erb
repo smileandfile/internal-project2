@@ -1,0 +1,14 @@
+<div class="snf-container" align="center">
+  <div class="snf-heading text-align-left margin-bottom">
+    <h2>Entity</h2>
+    <div class="margin-bottom">
+      <label class="label-left">* Fields are mandatory</label>
+    </div>
+  </div>
+  <%= render 'form', entity: @entity, action: "SHOW ENTITY" do |f| %>
+    <div>
+      <%= link_to 'Edit', edit_dashboard_entity_path(@entity), class: "btn btn-default" %>
+      <%= link_to 'Back', dashboard_entities_path, class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>

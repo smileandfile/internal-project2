@@ -1,0 +1,37 @@
+<%
+gstr3b_apis = [{ text: 'Fill data online', link: new_dashboard_gstr3b_path },
+                { text: 'Submit GSTR3B', link: submit_dashboard_gstr3b_index_path }, { text: 'Get data from GSTN Server', link: details_dashboard_gstr3b_index_path },
+                { text: 'Offset Liability', link: offset_liability_dashboard_gstr3b_index_path}, { text: 'Track Status', link: track_status_dashboard_gstr3b_index_path }]
+%>
+<div class="alert alert-success">
+  <%= "GSTIN No: #{@gstin.gstin_number} &  Return Period #{@return_period}" %></p>
+</div>
+
+<div class="snf-boxes">
+  <% gstr3b_apis.each do |api| %>
+    <div class="snf-box">
+      <%= link_to api[:text], api[:link] %>
+    </div>
+  <% end %>
+  <div class="snf-box">
+    <%= link_to 'Import Excel file', '#', data: { target: '#importExcelModal', toggle: 'modal' }%>
+  </div>
+</div>
+
+<div id="importExcelModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Import GSTR3B Excel</h2>
+      </div>
+      <div class="modal-body">
+        <%= form_tag save_gstr3b_excel_dashboard_gstr3b_index_path, multipart: true, method: :post do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Import", class: "btn btn-default" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

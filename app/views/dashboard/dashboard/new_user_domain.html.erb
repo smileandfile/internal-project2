@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+	  <div class="col-sm-9">
+	  	<%= simple_form_for @user, url: dashboard_create_user_domain_path do |f| %>
+	  	  <%= f.input :name %>
+	  	  <%= f.input :email %>
+	  	  <%= f.association :package %>
+	  	  <%= f.simple_fields_for @domain do |d| %>
+          <label>Domain Name</label>
+	  	    <%= d.input :name, label: false %>
+	  	  <% end %>
+	  	  <%= f.submit %>
+	  	<% end %>
+	  </div>
+  </div>
+</div>

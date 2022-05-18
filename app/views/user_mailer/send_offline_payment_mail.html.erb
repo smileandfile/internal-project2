@@ -1,0 +1,15 @@
+<p>Dear Madam/Sir,</p>
+<p>You have selected the following subscription package for your domain <strong><%= @user.domain.name.upcase %></strong> on the Smile and File Portal: </p>
+<p><strong>Package ID: </strong> <%= @order.package.id %></p>
+<p><strong>Package Name: </strong> <%= @order.package.name %></p>
+<p><strong>Order ID: </strong> <%= @order.id %></p>
+<p><strong>Order Amount: </strong> <%= @order.amount %></p>
+
+
+<% if @order.user_payment_mode&.to_sym == :cheque_draft %>
+  <p><%= render 'shared/payment_by_cheque_details' %></p>
+<% elsif @order.user_payment_mode&.to_sym == :neft_rtgs %>
+  <p><%= render 'shared/payment_by_neft_details' %></p>
+<% end %>
+
+<%= render 'common_mail_content' %>

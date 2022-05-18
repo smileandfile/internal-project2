@@ -1,0 +1,14 @@
+<div class="snf-container" align="center">
+  <div class="snf-heading text-align-left margin-bottom">
+    <h2>User</h2>
+    <div class="margin-bottom">
+      <label class="label-left">* Fields are mandatory</label>
+    </div>
+  </div>
+  <%= render 'form', user: @user, action: "SHOW USER" do |f| %>
+    <div>
+      <%= link_to 'Edit', edit_dashboard_domain_user_path(@domain, @user), class: "btn btn-default" %>
+      <%= link_to 'Back', dashboard_domain_users_path(@domain), class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>

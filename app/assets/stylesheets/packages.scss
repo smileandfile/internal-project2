@@ -1,0 +1,14 @@
+// Place all the styles related to the Packages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.package-terms-conditions {
+  .modal-dialog {
+    width: 1050px;
+    max-height: 400px;
+    overflow: auto;
+    .modal-content {
+      text-align: inherit;
+    }
+  }
+}

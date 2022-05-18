@@ -1,0 +1,252 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require font-awesome
+ *= require chosen
+ *= require select2/select2-full
+ *= require bootstrap-datepicker3
+ *= require_self
+ *= require_tree .
+ *= stub pdf
+ */
+
+@import "variables";
+@import 'bootstrap-sprockets';
+@import "bootstrap";
+@import "chosen-select";
+@import "fabric.min";
+@import "react-select.min";
+
+.working-level {
+  max-height: 350px;
+  overflow: auto;
+}
+.btn-default {
+  &:hover {
+    background-color: $brand-primary;
+  }
+}
+
+.row.row-gutter {
+  margin-bottom: -15px;
+  overflow: hidden;
+  & > *[class^="col"] {
+    margin-bottom: 15px;
+  }
+}
+.row.row-margins {
+  padding-top: 7px; /* or margin-top: 7px; */
+  padding-bottom: 7px; /* or margin-bottom: 7px; */
+  & > *[class^="col"] {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.go-to-top-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: $brand-primary;
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-radius: 35px;
+  display: none;
+  cursor: pointer;
+  i {
+    color: white;
+    font-size: 28px;
+    margin-top: 11px;
+    padding-left: 15px;
+  }
+}
+
+
+.table-center {
+  margin: 0 180px;
+}
+
+.snf-container {
+  margin-top: 35px;
+}
+.snf-heading {
+  width:80%;
+  h2 {
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .label-left {
+    float: right;
+    margin-right: 226px;
+    margin-top: 15px;
+    @media (max-width: $horizontal-phone-width) {
+      margin-right: 0px;
+      float: none;
+    }
+  }
+}
+.snf-form {
+  width: 80%;
+}
+
+.form-inputs {
+  margin-right: 225px;
+  @media (max-width: $horizontal-phone-width) {
+    margin-right: 0px;
+  }
+}
+.snf-form-input {
+  margin-top: 5px;
+  font-weight: 300;
+  height: 45px;
+  background-color: $color-white-smoke;
+}
+.snf-form-label {
+  margin-top: 15px;
+}
+
+.text-left {
+  float: left;
+}
+
+.button-align {
+  @media (max-width: $horizontal-phone-width) {
+    text-align: center;
+  }
+  & > * {
+    margin-right: 20px;
+    @media (max-width: $horizontal-phone-width) {
+      margin-bottom: 5px;
+      width: 140px;
+    }
+  }
+}
+
+.form-input-small {
+  height: 30px;
+}
+
+
+.btn-default {
+  padding: 15px 25px;
+  font-size: 12px;
+  &.big {
+    padding: 15px 50px;
+  }
+  &.small {
+    padding: 4px 28px;
+  }
+}
+
+.footer-container {
+  background-color: $brand-primary;
+  padding-top: 10px;
+  margin-top: 20px;
+  & > div {
+    color: white;
+  }
+}
+
+.footer-items {
+  margin-top: 10px;
+  a {
+    font-size: 11px;
+    color: white;
+    margin-right: 10px;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.policy-heading {
+  padding-left: 15px;
+  h1 {
+    font-size: 32px;
+    font-weight: 300;
+    margin-top: 0px;
+  }
+}
+
+.policies-content {
+  margin-bottom: 30px;
+  p {
+    margin-top: 20px;
+    strong {
+      margin-top: 15px;
+    }
+  }
+}
+
+.terms-agree-checkbox {
+  input{
+    margin-right: 10px;
+    margin-bottom: 15px;
+  }
+  span {
+    font-weight: bold;
+    a {
+      color: $text-color;
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+.modal {
+  // margin: 15% auto;
+  // width: 50%;
+  .modal-content {
+    text-align: center;
+    .btn-default {
+      padding: 5px 25px;
+    }
+   .modal-header {
+     border-bottom: none;
+    }
+   .modal-footer {
+     border-top: none;
+    }
+  }
+}
+
+.faqs {
+  ol, ul {
+    li {
+      p {
+        padding-left: 4px;
+      }
+    }
+  }
+  p {
+    padding-left: 45px;
+  }
+}
+
+
+.snf-boxes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .snf-box {
+    // width: 40%;
+    border: 3px solid $brand-primary;
+    padding: 10px;
+  }
+
+}
+
+

@@ -1,0 +1,36 @@
+<li>
+  <%= active_link_to(dashboard_entities_path, :wrap_tag => :li) do %>
+    <i class="fa fa-user fa-fw"></i> Entity
+    <% end %>
+</li>
+<li>
+  <%= active_link_to(dashboard_gstins_path, :wrap_tag => :li) do %>
+    <i class="fa fa-user fa-fw"></i> GSTIN
+    <% end %>
+</li>
+<% if can? :manage, Branch %>
+  <li>
+    <%= active_link_to(dashboard_branches_path, :wrap_tag => :li) do %>
+      <i class="fa fa-user fa-fw"></i> Branch
+      <% end %>
+  </li>
+<% end %>
+<% if current_user.domain_admin? %>
+  <li>
+    <%= active_link_to(dashboard_domains_path, :wrap_tag => :li, active: :exclusive) do %>
+      <i class="fa fa-user fa-fw"></i> Domain
+    <% end %>
+  </li>
+  <li>
+    <%= active_link_to(dashboard_domain_users_path(current_user.domain), active: :exclusive) do %>
+      <i class="fa fa-user fa-fw"></i>
+      User
+    <% end %>
+  </li>
+  <li>
+    <%= active_link_to(permissions_dashboard_domain_users_path(current_user.domain)) do %>
+      <i class="fa fa-user fa-fw"></i>
+      User Permission
+    <% end %>
+  </li>
+<% end %>

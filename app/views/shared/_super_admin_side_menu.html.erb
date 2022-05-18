@@ -1,0 +1,101 @@
+<div id="sidebar-wrapper">
+  <aside id="sidebar">
+    <ul id="sidemenu" class="sidebar-nav">
+      <li>
+        <a href="#">
+          <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
+          <span class="sidebar-title">Home</span>
+        </a>
+      </li>
+      <% if current_user.present? %>
+        <li>
+          <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
+            <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+            <span class="sidebar-title">Admin</span>
+            <b class="caret"></b>
+          </a>
+          <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
+            <li>
+              <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-create">
+                <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+                <span class="sidebar-title">Create</span>
+                <b class="caret"></b>
+              </a>
+              <ul id="submenu-create" class="panel-collapse collapse panel-switch" role="menu">
+                <li>
+                  <%= active_link_to(new_dashboard_branch_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    Branch
+                  <% end %>
+                </li>
+                <li>
+                  <%= active_link_to(new_dashboard_gstin_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    GSTIN
+                  <% end %>
+                </li>
+                <li>
+                  <%= active_link_to(new_dashboard_entity_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    Entity
+                  <% end %>
+                </li>
+                <li>
+                  <%= active_link_to(new_dashboard_domain_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    Domain
+                  <% end %>
+                </li>
+                <li>
+                  <%= active_link_to(new_dashboard_package_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    Package
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-edit">
+                <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+                <span class="sidebar-title">Edit</span>
+                <b class="caret"></b>
+              </a>
+              <ul id="submenu-edit" class="panel-collapse collapse panel-switch" role="menu">
+                <li>
+                  <%= active_link_to(dashboard_branches_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    Branch
+                  <% end %>
+                </li>
+                <li>
+                  <%= active_link_to(dashboard_gstins_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    GSTIN
+                  <% end %>
+                </li>
+                <li>
+                  <%= active_link_to(dashboard_entities_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    Entity
+                  <% end %>
+                </li>
+                <li>
+                  <%= active_link_to(dashboard_domains_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    Domain
+                  <% end %>
+                </li>
+                <li>
+                  <%= active_link_to(dashboard_packages_path, :wrap_tag => :li) do %>
+                    <i class="fa fa-user fa-fw"></i>
+                    package
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+</div>

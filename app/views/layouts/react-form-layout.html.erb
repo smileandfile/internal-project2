@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReactOnRailsWithWebpacker</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/4.1.0/css/fabric.min.css">
+
+    <%= javascript_pack_tag 'webpack-bundle' %>
+  </head>
+  <body>
+    <div id="navbar-wrapper">
+      <header>
+        <%= render 'shared/admin_header' %>
+      </header>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>

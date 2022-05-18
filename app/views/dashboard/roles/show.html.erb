@@ -1,0 +1,7 @@
+<h2>ROLE : <%= @role.name %></h2>
+<h2>Allowed Actions:</h2>
+<select>
+  <%= @role.allowed_actions.each do |val| %>
+    <option><%= val %></option>
+  <% end %>
+</select>

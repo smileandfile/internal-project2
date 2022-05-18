@@ -1,0 +1,44 @@
+<%= simple_form_for([:dashboard, @branch]) do |f| %>
+  <% if branch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(branch.errors.count, "error") %> prohibited this branch from being saved:</h2>
+
+      <ul>
+      <% branch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="entity">
+    <%= f.association :entity, collection: @entities, label_method: :company_name,
+                      prompt: "Choose A ENTITY" %>
+  </div>
+  <%= f.association :gstin, collection: @gstins, label_method: :gstin_number,
+                    prompt: "Choose A GSTIN" %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :location %>
+
+
+  <div class="actions">
+    <%= f.submit 'Create Branch', class: 'btn btn-default extra-margin-bottom' %>
+  </div>
+<% end %>
+<script>
+  $('.entity').change(function(){
+    //get selected entity id
+    entity_id = $('.entity :selected').val();
+    var entityIdToGstin = <%= raw @entity_id_to_gstin.to_json %>
+    //get gstin data of selected entity
+    var selectedEntityGstin = entityIdToGstin[entity_id];
+    var $el = $("#branch_gstin_id");
+    // remove old options
+    $el.empty();
+    //adding new options
+    $.each(selectedEntityGstin, function(key,value) {
+      $el.append($("<option></option>")
+         .attr("value", value["id"]).text(value["gstin_number"]));
+    });
+  })
+</script>

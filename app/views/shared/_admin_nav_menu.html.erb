@@ -1,0 +1,133 @@
+<ul class="nav navbar-nav">
+  <li>
+    <a href="<%= root_path %>">Home</a>
+  </li>
+  <% if current_user.present? %>
+    <li class="dropdown">
+      <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        Administration<i class="fa fa-angle-down"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <% unless current_user.user?%>
+          <li class="dropdown-submenu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Create</a>
+            <ul class="dropdown-menu">
+              <%= render 'shared/create_items_nav' %>
+            </ul>
+          </li>
+        <% end %>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modify/Delete</a>
+          <ul class="dropdown-menu">
+            <%= render 'shared/modify_items_nav' %>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  <% end %>
+  <% if current_user&.super_admin? %>
+    <li><%= active_link_to 'Gstr3b', dashboard_gstr3b_index_path %></li>
+  <% end %>
+  <li>
+    <%= active_link_to 'Subscription Packages', dashboard_packages_path %>
+  </li>
+  <li class="dropdown">
+    <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+      Downloads<i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+      <li class="dropdown-submenu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Excel Templates</a>
+        <% if excel_templates.present? %>
+          <ul class="dropdown-menu">
+            <% excel_templates.each do |excel| %>
+              <li><%= active_link_to excel.name, excel.file_url.url %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </li>
+      <% if other_templates.present? %>
+        <% other_templates.each do |other| %>
+          <li><%= active_link_to other.name, other.file_url.url %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </li>
+  <li><%= active_link_to 'Feedback', new_feedback_path %></li>
+  <li><%= active_link_to 'Contact', new_contact_path %></li>
+  <li><%= active_link_to 'FAQ', faq_path %></li>
+  <li><%= active_link_to "What's New", whats_new_path %></li>
+  <% if current_user.present? %>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" 
+        data-toggle="dropdown" role="button" aria-haspopup="true" 
+        aria-expanded="false">
+        <%= "Hi, #{current_user.name} (Domain - #{current_user.domain&.name})" %><i class="fa fa-angle-down"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <% if current_user.present? && current_user.domain&.package&.is_package_credit_type %>
+          <li>
+            <%= link_to dashboard_account_details_path do %>
+              <span>Account Details</span>
+            <% end %>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to destroy_user_session_path, :method => :delete do %>
+            <span>Logout</span>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to new_user_session_path do %>
+        <span>Login</span>
+      <% end %>
+    </li>
+  <% end %>
+  <li>
+    <%= active_link_to 'Back to Website', 'http://smileandfile.com/' %>
+  </li>
+  <% if current_user&.super? %>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" 
+        data-toggle="dropdown" role="button" aria-haspopup="true" 
+        aria-expanded="false">
+        SNF ADMIN<i class="fa fa-angle-down"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to edit_dashboard_snf_setting_path(snf_setting) do %>
+            <span>SETTINGS</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to special_domain_creation_dashboard_domains_path do %>
+            <span>SPECIAL DOMAIN</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to rails_admin_path do %>
+            <span>ADMIN PANEL</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to dashboard_roles_path do %>
+            <span>MANAGE ROLES</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to dashboard_search_taxpayer_path  do %>
+            <span>SEARCH TAXPAYER</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to reset_token_dashboard_snf_settings_path  do %>
+            <span>RESET TOKENS</span>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  <% end %>
+</ul>

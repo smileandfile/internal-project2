@@ -1,0 +1,23 @@
+<% if can? :update, @snf_setting %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <%= link_to 'UPDATE FAQS', edit_dashboard_snf_setting_path(snf_setting), class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<section>
+  <div class="container">
+    <div class="row policy-heading faqs text-uppercase">
+      <div class="col-sm-12">
+        <h1>What&rsquo;s New</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 policies-content">
+        <%= raw snf_setting.whats_new %>
+      </div>
+    </div>
+  </div>
+</section>

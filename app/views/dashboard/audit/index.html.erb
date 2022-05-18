@@ -1,0 +1,75 @@
+<%= will_paginate @gst_access_items %>
+<h3>Audit Log Entries</h3>
+<div class="table-responsive">
+  <table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th width="40%">Timing</th>
+        <th>User Info</th>
+        <th>Request Info</th>
+        <th>Response Info</th>
+        <th>Headers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @gst_access_items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td>
+              <strong>Request Time</strong> - <%= format_date_for_display(item.requested_at) %><br/>
+              <strong>Response Time</strong> - <%= format_date_for_display(item.response_at) %><br/>
+            </td>
+            <td>
+              <strong>UserId</strong> - <%= item.user_id %><br/>
+              <strong>Username</strong> - <%= item.username %><br/>
+              <strong>User Email</strong> - <%= item.user_email %><br/>
+              <strong>Domain</strong> - <%= item.domain %><br/>
+              <strong>GSTIN</strong> - <%= item.gstin %><br/>
+            </td>
+            <td>
+              <strong>API Name</strong> - <%= item.api_name %><br/>
+              <strong>Return Period</strong> - <%= item.return_period %><br/>
+              <strong>Base URL</strong> - <%= item.base_url %><br/>
+              <strong>Request Payload Size</strong> - <%= item.request_payload_size %><br/>
+              <strong>Response Payload Size</strong> - <%= item.response_payload_size %><br/>
+              <strong>Transaction ID</strong> - <%= item.transaction_id %><br/>
+              <strong>IP Address</strong> - <%= item.ip_address %>
+            </td>
+            <td>
+              <strong>Response Type</strong> - <%= item.response_type %><br/>
+              <strong>Error Reason</strong> - <%= item.invalid_reason %><br/>
+              <!-- Reference ID - TODO -->
+            </td>
+            <td>
+              <a data-toggle="modal" data-target=".data-headers-<%= item.id %>">See</a>
+              <div class="modal fade data-headers-<%= item.id %>" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body get-access-items">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">Request Headers</div>
+                        <div class="panel-body">
+                          <%= item.request_headers %>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">Response Headers</div>
+                        <div class="panel-body">
+                          <%= item.response_headers %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= will_paginate @gst_access_items %>

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <% if @errors.length > 0 %>
+        <div class="alert alert-warning">
+          Schema Validation Errors:
+          <ul>
+            <% @errors.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <pre><%= JSON.pretty_generate(@payload.as_json) %></pre>
+    </div>
+  </div>
+</div>

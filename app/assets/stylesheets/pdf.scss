@@ -1,0 +1,10 @@
+@import "variables";
+@import 'bootstrap-sprockets';
+@import "bootstrap";
+div.alwaysbreak { page-break-before: always; }
+div.nobreak:before { clear:both; }
+div.nobreak { page-break-inside: avoid; }
+
+.invoice-header {
+  float: right;
+}
